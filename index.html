@@ -9,11 +9,41 @@
     <!-- Inter Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <style>
+        /* CSS Variables for theming */
+        :root { /* Light theme defaults */
+            --bg-color-main: #f3f4f6; /* Light gray background */
+            --text-color-main: #333;
+            --card-bg-color: #ffffff;
+            --heading-color: #1f2937; /* gray-900 */
+            --subheading-color: #2563eb; /* blue-700 */
+            --contact-text-color: #4b5563; /* gray-600 */
+            --link-color: #3b82f6; /* blue-500 */
+            --link-hover-color: #1d4ed8; /* blue-700 */
+            --border-color-light: #d1d5db; /* gray-300 */
+            --section-border-color: #3b82f6; /* blue-500 */
+            --skill-hover-bg: #e0f2fe; /* light blue */
+        }
+
+        html.dark-mode { /* Dark theme variables */
+            --bg-color-main: #1a202c; /* darker gray */
+            --text-color-main: #e2e8f0; /* light gray */
+            --card-bg-color: #2d3748; /* dark slate */
+            --heading-color: #edf2f7; /* white */
+            --subheading-color: #90cdf4; /* light blue */
+            --contact-text-color: #a0aec0; /* light gray */
+            --link-color: #63b3ed; /* lighter blue */
+            --link-hover-color: #90cdf4; /* even lighter blue */
+            --border-color-light: #4a5568; /* dark gray */
+            --section-border-color: #63b3ed; /* light blue */
+            --skill-hover-bg: #4a5568; /* dark gray for hover */
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
+            background-color: var(--bg-color-main);
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color-main);
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
         }
         /* Custom scrollbar for a cleaner look */
         ::-webkit-scrollbar {
@@ -23,22 +53,31 @@
             background: #e0e0e0;
             border-radius: 10px;
         }
+        html.dark-mode ::-webkit-scrollbar-track {
+            background: #333;
+        }
         ::-webkit-scrollbar-thumb {
             background: #a0a0a0;
             border-radius: 10px;
         }
+        html.dark-mode ::-webkit-scrollbar-thumb {
+            background: #555;
+        }
         ::-webkit-scrollbar-thumb:hover {
             background: #808080;
+        }
+        html.dark-mode ::-webkit-scrollbar-thumb:hover {
+            background: #777;
         }
 
         /* General section card styling */
         .section-card {
-            background-color: #ffffff;
+            background-color: var(--card-bg-color);
             padding: 1.5rem 2rem; /* p-6 sm:p-8 */
             border-radius: 0.75rem; /* rounded-xl */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
             margin-bottom: 2rem; /* mb-8 */
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .section-card:hover {
             transform: translateY(-5px);
@@ -53,23 +92,64 @@
             padding: 0.25rem 0.5rem; /* px-2 py-1 */
             margin: 0.125rem 0; /* Slight margin for spacing */
             cursor: default; /* Indicate it's not a clickable link */
+            color: var(--text-color-main); /* Ensure skill item text follows theme */
         }
         .skill-item:hover {
-            background-color: #e0f2fe; /* Light blue background on hover */
+            background-color: var(--skill-hover-bg);
             transform: translateY(-2px) scale(1.02); /* Slight lift and scale */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
+
+        /* Applying theme variables to elements - Specificity adjustments */
+        h1, .h1-style { color: var(--heading-color); } /* Added .h1-style for flexibility */
+        h3, .h3-style { color: var(--subheading-color); } /* Added .h3-style for flexibility */
+        h4, .h4-style { color: var(--contact-text-color); } /* Added .h4-style for flexibility */
+
+        /* Override specific Tailwind classes with CSS variables */
+        .text-gray-600 { color: var(--contact-text-color) !important; }
+        .text-blue-500 { color: var(--link-color) !important; }
+        .hover\:text-blue-700:hover { color: var(--link-hover-color) !important; }
+        .text-blue-600 { color: var(--subheading-color) !important; }
+        .hover\:text-blue-600:hover { color: var(--link-hover-color) !important; }
+        .text-gray-700 { color: var(--text-color-main) !important; }
+        .text-gray-800 { color: var(--heading-color) !important; }
+        .text-gray-900 { color: var(--heading-color) !important; }
+        .border-blue-500 { border-color: var(--section-border-color) !important; }
+        .border-gray-200 { border-color: var(--border-color-light) !important; } /* For borders in experience/education */
+        .border-gray-300 { border-color: var(--border-color-light) !important; }
+        .hr { border-color: var(--border-color-light) !important; } /* For the <hr> tag */
+
+
+        /* Specific styles for the theme toggle button */
+        #themeToggle {
+            background-color: #e2e8f0; /* Light button background */
+            color: #2d3748; /* Dark icon color */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        html.dark-mode #themeToggle {
+            background-color: #4a5568; /* Dark button background */
+            color: #edf2f7; /* Light icon color */
+        }
+        #themeToggle:hover {
+            background-color: #cbd5e0; /* Lighter hover */
+        }
+        html.dark-mode #themeToggle:hover {
+            background-color: #636b77; /* Darker hover */
+        }
     </style>
 </head>
-<body class="antialiased text-gray-800">
+<body class="antialiased">
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         <div class="max-w-4xl mx-auto">
             <!-- Title Section -->
-            <div class="text-center mb-10 bg-white p-8 rounded-xl shadow-xl">
-                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-2 leading-tight">Michail Tsimpidaros</h1>
-                <h3 class="text-xl sm:text-2xl font-medium text-blue-700 mb-4">BUT Génie Électrique et Informatique Industrielle</h3>
-                <h4 class="text-lg text-gray-600">
-                    <a href="mailto:michail.tsimpidaros@gmail.com" class="text-blue-500 hover:text-blue-700 transition-colors duration-200 flex items-center justify-center gap-2">
+            <div class="text-center mb-10 p-8 rounded-xl shadow-xl relative section-card">
+                <button id="themeToggle" class="absolute top-4 right-4 p-2 rounded-full shadow-md transition-colors duration-200 flex items-center justify-center">
+                    <span id="themeIcon" class="text-xl">☀️</span> <!-- Sun/Moon emoji -->
+                </button>
+                <h1 class="text-5xl sm:text-6xl font-extrabold mb-2 leading-tight h1-style">Michail Tsimpidaros</h1>
+                <h3 class="text-xl sm:text-2xl font-medium mb-4 h3-style">BUT Génie Électrique et Informatique Industrielle</h3>
+                <h4 class="text-lg h4-style">
+                    <a href="mailto:michail.tsimpidaros@gmail.com" class="hover:text-blue-700 transition-colors duration-200 flex items-center justify-center gap-2">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M2.003 5.884L10 12l8-6.116V6H2v-.116zM2 6v12h18V6H2zm-2-.116V18c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5.884l-10 7.5z"/>
                         </svg>
@@ -78,20 +158,20 @@
                 </h4>
                 <div class="flex justify-center items-center gap-4 mt-4 text-gray-700">
                     <a href="tel:+306983615071" class="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
-                        <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
                         </svg>
                         (+30) 6983615071 (GR)
                     </a>
                     <a href="tel:+330695312645" class="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
-                        <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
                         </svg>
                         (+33) 0695312645 (FR)
                     </a>
                 </div>
-                <hr class="my-6 border-gray-300" />
-                <ul class="list-inline flex justify-center gap-4 text-3xl text-gray-600">
+                <hr class="my-6 hr" />
+                <ul class="list-inline flex justify-center gap-4 text-3xl">
                     <li><span class="skill-item">C 🚀</span></li>
                     <li><span class="skill-item">Python 🐍</span></li>
                     <li><span class="skill-item">FPGA 💽</span></li>
@@ -102,12 +182,12 @@
 
             <!-- Summary Section -->
             <div class="summary section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Résumé</h2>
-                <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Résumé</h2>
+                <p class="text-lg leading-relaxed mb-6">
                     Passionné par l'innovation et l'ingénierie, je suis un étudiant en Génie Électrique et Informatique Industrielle avec une solide expérience en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-700">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div>
                         <p class="skill-item">Business Analysis 📊</p>
                         <p class="skill-item">Développement Web 🌐</p>
@@ -128,20 +208,20 @@
 
             <!-- Work Experience Section -->
             <div class="work-experience section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Expériences Professionnelles 💼</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Expériences Professionnelles 💼</h2>
 
                 <!-- Intelsys SA -->
                 <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-2">
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold text-gray-800">Stage de 8 semaines</h3>
-                            <p class="text-blue-600 font-medium text-lg">Intelsys SA, Athènes, GRECE</p>
+                            <h3 class="text-2xl font-semibold h3-style">Stage de 8 semaines</h3>
+                            <p class="font-medium text-lg text-blue-600">Intelsys SA, Athènes, GRECE</p>
                         </div>
                         <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium text-gray-600">Juillet 2023</h3>
+                            <h3 class="text-lg font-medium h3-style">Juillet 2023</h3>
                         </div>
                     </div>
-                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                    <ul class="list-disc pl-5 space-y-1">
                         <li><span class="skill-item">Installation et mise en service des liaisons micro-ondes de Nokia, Huawei, Eriksson. 📡</span></li>
                         <li><span class="skill-item">Installation de RBS (station de base radio) 4G et 5G (2 mois). 📶</span></li>
                     </ul>
@@ -151,14 +231,14 @@
                 <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-2">
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold text-gray-800">Stage de 4 mois</h3>
-                            <p class="text-blue-600 font-medium text-lg">DISCOVERY PATH, Athènes, GRECE</p>
+                            <h3 class="text-2xl font-semibold h3-style">Stage de 4 mois</h3>
+                            <p class="font-medium text-lg text-blue-600">DISCOVERY PATH, Athènes, GRECE</p>
                         </div>
                         <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium text-gray-600">Mai - Septembre 2024</h3>
+                            <h3 class="text-lg font-medium h3-style">Mai - Septembre 2024</h3>
                         </div>
                     </div>
-                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                    <ul class="list-disc pl-5 space-y-1">
                         <li><span class="skill-item">Chargé de la conception et construction d'un réseau maillé complexe des ESP32 pour un bâtiment scolaire connecté. 🌐</span></li>
                     </ul>
                 </div>
@@ -167,14 +247,14 @@
                 <div class="mb-6 last:mb-0">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-2">
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold text-gray-800">Data Entry</h3>
-                            <p class="text-blue-600 font-medium text-lg">BASIS finance group, Kos, GRECE</p>
+                            <h3 class="text-2xl font-semibold h3-style">Data Entry</h3>
+                            <p class="font-medium text-lg text-blue-600">BASIS finance group, Kos, GRECE</p>
                         </div>
                         <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium text-gray-600">Mai - Septembre 2024</h3>
+                            <h3 class="text-lg font-medium h3-style">Mai - Septembre 2024</h3>
                         </div>
                     </div>
-                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                    <ul class="list-disc pl-5 space-y-1">
                         <li><span class="skill-item">Saisie de données financières. 📊</span></li>
                     </ul>
                 </div>
@@ -182,28 +262,28 @@
 
             <!-- Education Section -->
             <div class="formation section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Formation 🎓</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Formation 🎓</h2>
 
                 <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <h3 class="text-2xl font-semibold text-gray-800">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)</h3>
-                    <p class="text-blue-600 font-medium text-lg">IUT de Velizy, UVSQ, Velizy-Villacoublay (78)</p>
-                    <p class="text-gray-600 mb-2">Septembre 2021 - 2024</p>
+                    <h3 class="text-2xl font-semibold h3-style">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)</h3>
+                    <p class="font-medium text-lg text-blue-600">IUT de Velizy, UVSQ, Velizy-Villacoublay (78)</p>
+                    <p class="mb-2 text-gray-700">Septembre 2021 - 2024</p>
                 </div>
 
                 <div>
-                    <h3 class="text-2xl font-semibold text-gray-800">Diplôme de fin d'études grec (Apolitirion)</h3>
-                    <p class="text-blue-600 font-medium text-lg">Équivalent du baccalauréat scientifique</p>
-                    <p class="text-blue-600 font-medium text-lg">LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)</p>
-                    <p class="text-gray-600 mb-2">Septembre 2021</p>
+                    <h3 class="text-2xl font-semibold h3-style">Diplôme de fin d'études grec (Apolitirion)</h3>
+                    <p class="font-medium text-lg text-blue-600">Équivalent du baccalauréat scientifique</p>
+                    <p class="font-medium text-lg text-blue-600">LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)</p>
+                    <p class="mb-2 text-gray-700">Septembre 2021</p>
                 </div>
             </div>
 
             <!-- Technical Skills Section -->
             <div class="technical-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Compétences Techniques & Informatiques 💻</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-700">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Compétences Techniques & Informatiques 💻</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 text-gray-800">Électricité et électronique: ⚡</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style">Électricité et électronique: ⚡</h4>
                         <ul class="list-disc pl-5 space-y-1">
                             <li><span class="skill-item">Électronique analogique et numérique 🔌</span></li>
                             <li><span class="skill-item">Conversion d'énergie 🔋</span></li>
@@ -214,14 +294,14 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 text-gray-800">Automatisme: 🤖</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style">Automatisme: 🤖</h4>
                         <ul class="list-disc pl-5 space-y-1">
                             <li><span class="skill-item">Automates programmables Schneider Grafcet 🚦</span></li>
                             <li><span class="skill-item">Ladder 🪜</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 text-gray-800">Informatique Industrielle: 🏭</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style">Informatique Industrielle: 🏭</h4>
                         <ul class="list-disc pl-5 space-y-1">
                             <li><span class="skill-item">Microcontrôleurs C FPGA (logiciel Xilinx) VHDL 💽</span></li>
                             <li><span class="skill-item">BUS CAN 🚌</span></li>
@@ -231,7 +311,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 text-gray-800">Informatique: 🧑‍💻</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style">Informatique: 🧑‍💻</h4>
                         <ul class="list-disc pl-5 space-y-1">
                             <li><span class="skill-item">Langage C et C++ 🚀</span></li>
                             <li><span class="skill-item">Scilab 📊</span></li>
@@ -245,8 +325,8 @@
 
             <!-- Projects Section -->
             <div class="projects section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Projets 🛠️</h2>
-                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Projets 🛠️</h2>
+                <ul class="list-disc pl-5 space-y-1">
                     <li><span class="skill-item">Étude et réalisation d'un thermomètre numérique en technologie traversante. 🌡️</span></li>
                     <li><span class="skill-item">Commande par un FPGA de la vitesse de rotation d'un moteur à partir d'une télécommande infrarouge. 🏎️</span></li>
                     <li><span class="skill-item">Banc de test contrôlé par une carte numérique (décodage trame, FPGA...). 🔬</span></li>
@@ -261,8 +341,8 @@
 
             <!-- Languages Section -->
             <div class="languages section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Langues 🗣️</h2>
-                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Langues 🗣️</h2>
+                <ul class="list-disc pl-5 space-y-1">
                     <li><span class="skill-item">ANGLAIS - niveau C1 (TOEIC) 🇬🇧</span></li>
                     <li><span class="skill-item">FRANCAIS 🇫🇷</span></li>
                     <li><span class="skill-item">GREC - Langue maternelle 🇬🇷</span></li>
@@ -271,8 +351,8 @@
 
             <!-- Interests Section -->
             <div class="interests section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Centres d'intérêt & Hobbies 🏄</h2>
-                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Centres d'intérêt & Hobbies 🏄</h2>
+                <ul class="list-disc pl-5 space-y-1">
                     <li><span class="skill-item">Scout marin (11 années) ⛵</span></li>
                     <li><span class="skill-item">Water polo (6 années) 🏊</span></li>
                     <li><span class="skill-item">Kick boxing (3 années) 🥊</span></li>
@@ -283,8 +363,8 @@
 
             <!-- Soft Skills Section -->
             <div class="soft-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 border-b-2 border-blue-500 pb-2">Soft Skills ✨</h2>
-                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Soft Skills ✨</h2>
+                <ul class="list-disc pl-5 space-y-1">
                     <li><span class="skill-item">CRÉATIVITÉ 💡</span></li>
                     <li><span class="skill-item">VISUALISATION 🧠</span></li>
                     <li><span class="skill-item">CURIOSITÉ 🧐</span></li>
@@ -300,5 +380,44 @@
             </footer>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const htmlElement = document.documentElement; // Get the html tag
+
+            // Function to set the theme
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    htmlElement.classList.add('dark-mode');
+                    themeIcon.textContent = '🌙'; // Moon icon for dark mode
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    htmlElement.classList.remove('dark-mode');
+                    themeIcon.textContent = '☀️'; // Sun icon for light mode
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            // Check for saved theme preference or default to light, or respect OS preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // Check OS preference if no theme saved
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.classList.contains('dark-mode') ? 'dark' : 'light';
+                setTheme(currentTheme === 'light' ? 'dark' : 'light');
+            });
+        });
+    </script>
 </body>
 </html>
+

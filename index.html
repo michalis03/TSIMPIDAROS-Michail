@@ -3,40 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Test Webpage</title>
+    <title>Michail Tsimpidaros - CV</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            color: #333;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
         }
-        .container {
-            background-color: #ffffff;
-            padding: 40px 60px;
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #4CAF50;
-            margin-bottom: 20px;
+        ::-webkit-scrollbar-thumb {
+            background: #a0a0a0;
+            border-radius: 10px;
         }
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #808080;
+        }
+        /* Base styles for sections to allow hover effects */
+        .section-card {
+            transition: all 0.3s ease-in-out;
+        }
+        /* Hover effect for sections */
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Hello from my GitHub Page! 👋</h1>
-        <p>This is a test to make sure everything is working correctly.</p>
-        <p>If you're reading this, your CV webpage will look great here too!</p>
+<body class="antialiased text-gray-800">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- Hero Section: Name, Title, and Contact Info -->
+        <div class="bg-white p-8 rounded-xl shadow-xl mb-8 text-center relative overflow-hidden section-card">
+            <!-- Background element for visual flair -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 opacity-50 rounded-xl"></div>
+            <div class="relative z-10">
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-2 leading-tight">Michail Tsimpidaros</h1>
+                <p class="text-xl sm:text-2xl font-medium text-blue-700 mb-6">BUT Génie Électrique et Informatique Industrielle</p>
+
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto mb-8">
+                    Passionné par l'innovation et l'ingénierie, je suis un étudiant en Génie Électrique et Informatique Industrielle avec une solide expérience en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
+                </p>
+
+                <!-- Contact Information -->
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-lg sm:text-xl text-gray-800 font-semibold">
+                    <a href="mailto:michail.tsimpidaros@gmail.com" class="flex items-center hover:text-blue-600 transition-colors duration-200">
+                        <!-- Email Icon -->
+                        <svg class="w-6 h-6 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M2.003 5.884L10 12l8-6.116V6H2v-.116zM2 6v12h18V6H2zm-2-.116V18c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5.884l-10 7.5z"/>
+                        </svg>
+                        michail.tsimpidaros@gmail.com
+                    </a>
+                    <a href="tel:+306983615071" class="flex items-center hover:text-blue-600 transition-colors duration-200">
+                        <!-- Phone Icon -->
+                        <svg class="w-6 h-6 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
+                        </svg>
+                        (+30) 6983615071 (GR)
+                    </a>
+                    <a href="tel:+330695312645" class="flex items-center hover:text-blue-600 transition-colors duration-200">
+                        <!-- Phone Icon -->
+                        <svg class="w-6 h-6 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
+                        </svg>
+                        (+33) 0695312645 (FR)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column for Soft Skills, Languages, Interests -->
+            <div class="lg:col-span-1 space-y-8">
+
+                <!-- Soft Skills Section -->
+                <section class="bg-white p-6 sm:p-8 rounded-xl shadow-md section-card">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-blue-500 pb-2">Soft Skills</h2>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                        <li>CRÉATIVITÉ</li>
+                        <li>VISUALISATION</li>
+                        <li>CURIOSITÉ</li>
+                        <li>ADAPTATION</li>
+                        <li>TRAVAIL EN ÉQUIPE</li>
+                    </ul>
+                </section>
+
+                <!-- Languages Section -->
+                <section class="bg-white p-6 sm:p-8 rounded-xl shadow-md section-card">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-blue-500 pb-2">Langues</h2>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                        <li>ANGLAIS - niveau C1 (TOEIC)</li>
+                        <li>FRANCAIS</li>
+                        <li>GREC - Langue maternelle</li>
+                    </ul>
+                </section>
+
+                <!-- Centres d'intérêt Section -->
+                <section class="bg-white p-6 sm:p-8 rounded-xl shadow-md section-card">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-blue-500 pb-2">Centres d'intérêt</h2>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                        <li>Scout marin (11 années)</li>
+                        <li>Water polo (6 années)</li>
+                        <li>Kick boxing (3 années)</li>
+                        <li>Sailing (navigation à voile)</li>
+                        <li>Responsable technique son et lumière dans des spectacles scolaires au Lycée Franco-Hellénique d'Athènes</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Right Column for Education, Experience, Technical Skills, Projects -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Formation Section -->
+                <section id="formation" class="bg-white p-6 sm:p-8 rounded-xl shadow-md section-card">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-blue-500 pb-2">Formation</h2>
+
+                    <div class="mb-6 last:mb-0">
+                        <h3 class="text-2xl font-semibold text-gray-800">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)</h3>
+                        <p class="text-blue-600 font-medium text-lg">IUT de Velizy, UVSQ, Velizy-Villacoublay (78)</p>
+                        <p class="text-gray-600 mb-2">Septembre 2021 - 2024</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800">Diplôme de fin d'études grec (Apolitirion)</h3>
+                        <p class="text-blue-600 font-medium text-lg">Équivalent du baccalauréat scientifique</p>
+                        <p class="text-blue-600 font-medium text-lg">LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)</p>
+                        <p class="text-gray-600 mb-2">Septembre 2021</p>
+                    </div>
+                </section>
+
+                <!-- Expériences Professionnelles Section -->
+                <section id="experience" class="bg-white p-6 sm:p-8 rounded-xl shadow-md section-card">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-blue-500 pb-2">Expériences Professionnelles</h2>
+
+                    <!-- Intelsys SA -->
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Stage de 8 semaines</h3>
+                        <p class="text-blue-600 font-medium text-lg">Intelsys SA, Athènes, GRECE</p>
+                        <p class="text-gray-600 mb-2">Juillet 2023</p>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li>Installation et mise en service des liaisons micro-ondes de Nokia, Huawei, Eriksson.</li>
+                            <li>Installation de RBS (station de base radio) 4G et 5G (2 mois).</li>
+                        </ul>
+                    </div>
+
+                    <!-- DISCOVERY PATH -->
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Stage de 4 mois</h3>
+                        <p class="text-blue-600 font-medium text-lg">DISCOVERY PATH, Athènes, GRECE</p>
+                        <p class="text-gray-600 mb-2">Mai - Septembre 2024</p>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li>Chargé de la conception et construction d'un réseau maillé complexe des ESP32 pour un bâtiment scolaire connecté.</li>
+                        </ul>
+                    </div>
+
+                    <!-- BASIS finance group -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800">Data Entry</h3>
+                        <p class="text-blue-600 font-medium text-lg">BASIS finance group, Kos, GRECE</p>
+                        <p class="text-gray-600 mb-2">Mai - Septembre 2024</p>
+                    </div>
+                </section>
+
+                <!-- Compétences Techniques & Informatiques Section -->
+                <section id="skills" class="bg-white p-6 sm:p-8 rounded-xl shadow-md section-card">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-blue-500 pb-2">Compétences Techniques & Informatiques</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-gray-800">Électricité et électronique:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Électronique analogique et numérique</li>
+                                <li>Conversion d'énergie</li>
+                                <li>Transformateurs</li>
+                                <li>Machines à courant continu</li>
+                                <li>Simulation sous LTspice et PSim</li>
+                                <li>Réalisation de cartes sous Kicad (CAO)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-gray-800">Automatisme:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Automates programmables Schneider Grafcet</li>
+                                <li>Ladder</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-gray-800">Informatique Industrielle:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Microcontrôleurs C FPGA (logiciel Xilinx) VHDL</li>
+                                <li>BUS CAN</li>
+                                <li>IoT microcontroler</li>
+                                <li>FREERTOS</li>
+                                <li>SQL</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 text-gray-800">Informatique:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Langage C et C++</li>
+                                <li>Scilab</li>
+                                <li>LabView</li>
+                                <li>Microsoft Office</li>
+                                <li>Python</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projets Section -->
+                <section class="bg-white p-6 sm:p-8 rounded-xl shadow-md section-card">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-blue-500 pb-2">Projets</h2>
+                    <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                        <li>Étude et réalisation d'un thermomètre numérique en technologie traversante.</li>
+                        <li>Commande par un FPGA de la vitesse de rotation d'un moteur à partir d'une télécommande infrarouge.</li>
+                        <li>Banc de test contrôlé par une carte numérique (décodage trame, FPGA...).</li>
+                        <li>Mesure de distance (capteur à ultrason).</li>
+                        <li>Affichage de mesures avec une carte Raspberry Pi.</li>
+                        <li>Acquisition de mesures avec une carte Sleepy Bee.</li>
+                        <li>Voiture autonome avec lidar.</li>
+                        <li>Réalisation d'un bras robot automatique.</li>
+                        <li>Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi.</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="mt-8 bg-gray-800 text-white p-6 sm:p-8 rounded-xl shadow-lg text-center">
+            <p class="text-sm">&copy; 2025 Michail Tsimpidaros. Tous droits réservés.</p>
+            <p class="text-sm mt-2">Réalisé avec passion et code.</p>
+        </footer>
     </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michail Tsimpidaros - CV</title>
+    <title id="cvTitle">Michail Tsimpidaros - CV</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font -->
@@ -121,19 +121,19 @@
 
 
         /* Specific styles for the theme toggle button */
-        #themeToggle {
+        #themeToggle, #languageToggle {
             background-color: #e2e8f0; /* Light button background */
             color: #2d3748; /* Dark icon color */
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        html.dark-mode #themeToggle {
+        html.dark-mode #themeToggle, html.dark-mode #languageToggle {
             background-color: #4a5568; /* Dark button background */
             color: #edf2f7; /* Light icon color */
         }
-        #themeToggle:hover {
+        #themeToggle:hover, #languageToggle:hover {
             background-color: #cbd5e0; /* Lighter hover */
         }
-        html.dark-mode #themeToggle:hover {
+        html.dark-mode #themeToggle:hover, html.dark-mode #languageToggle:hover {
             background-color: #636b77; /* Darker hover */
         }
     </style>
@@ -143,11 +143,16 @@
         <div class="max-w-4xl mx-auto">
             <!-- Title Section -->
             <div class="text-center mb-10 p-8 rounded-xl shadow-xl relative section-card">
-                <button id="themeToggle" class="absolute top-4 right-4 p-2 rounded-full shadow-md transition-colors duration-200 flex items-center justify-center">
-                    <span id="themeIcon" class="text-xl">☀️</span> <!-- Sun/Moon emoji -->
-                </button>
-                <h1 class="text-5xl sm:text-6xl font-extrabold mb-2 leading-tight h1-style">Michail Tsimpidaros</h1>
-                <h3 class="text-xl sm:text-2xl font-medium mb-4 h3-style">BUT Génie Électrique et Informatique Industrielle</h3>
+                <div class="absolute top-4 right-4 flex gap-2">
+                    <button id="themeToggle" class="p-2 rounded-full shadow-md flex items-center justify-center">
+                        <span id="themeIcon" class="text-xl">☀️</span> <!-- Sun/Moon emoji -->
+                    </button>
+                    <button id="languageToggle" class="p-2 rounded-full shadow-md text-sm font-semibold flex items-center justify-center">
+                        <span id="languageText">EN</span> <!-- Language text -->
+                    </button>
+                </div>
+                <h1 class="text-5xl sm:text-6xl font-extrabold mb-2 leading-tight h1-style" data-fr="Michail Tsimpidaros" data-en="Michail Tsimpidaros">Michail Tsimpidaros</h1>
+                <h3 class="text-xl sm:text-2xl font-medium mb-4 h3-style" data-fr="Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)" data-en="Graduate in Electrical Engineering and Industrial Computing (BUT GEII)">Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)</h3>
                 <h4 class="text-lg h4-style">
                     <a href="mailto:michail.tsimpidaros@gmail.com" class="hover:text-blue-700 transition-colors duration-200 flex items-center justify-center gap-2">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -172,58 +177,58 @@
                 </div>
                 <hr class="my-6 hr" />
                 <ul class="list-inline flex justify-center gap-4 text-3xl">
-                    <li><span class="skill-item">C 🚀</span></li>
-                    <li><span class="skill-item">Python 🐍</span></li>
-                    <li><span class="skill-item">FPGA 💽</span></li>
-                    <li><span class="skill-item">IoT 🔗</span></li>
-                    <li><span class="skill-item">Kicad 🎨</span></li>
+                    <li><span class="skill-item">C</span></li>
+                    <li><span class="skill-item">Python</span></li>
+                    <li><span class="skill-item">FPGA</span></li>
+                    <li><span class="skill-item">IoT</span></li>
+                    <li><span class="skill-item">Kicad</span></li>
                 </ul>
             </div>
 
             <!-- Summary Section -->
             <div class="summary section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Résumé</h2>
-                <p class="text-lg leading-relaxed mb-6">
-                    Passionné par l'innovation et l'ingénierie, je suis un étudiant en Génie Électrique et Informatique Industrielle avec une solide expérience en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Résumé" data-en="Summary">Résumé</h2>
+                <p class="text-lg leading-relaxed mb-6" data-fr="Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle avec une solide expérience en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques." data-en="Passionate about innovation and engineering, I am a young graduate in Electrical Engineering and Industrial Computing with solid experience in embedded systems development, IoT networks, and automation. Curious and adaptable, I seek to apply my technical skills and creativity to take on new technological challenges.">
+                    Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle avec une solide expérience en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div>
-                        <p class="skill-item">Business Analysis 📊</p>
-                        <p class="skill-item">Développement Web 🌐</p>
-                        <p class="skill-item">IoT Management 🔗</p>
+                        <p class="skill-item" data-fr="Business Analysis 📊" data-en="Business Analysis 📊">Business Analysis 📊</p>
+                        <p class="skill-item" data-fr="Développement Web 🌐" data-en="Web Development 🌐">Développement Web 🌐</p>
+                        <p class="skill-item" data-fr="IoT Management 🔗" data-en="IoT Management 🔗">IoT Management 🔗</p>
                     </div>
                     <div>
-                        <p class="skill-item">Développement Logiciel 🧑‍💻</p>
-                        <p class="skill-item">Conception Électronique 🎨</p>
-                        <p class="skill-item">Admin Linux 🐧</p>
+                        <p class="skill-item" data-fr="Développement Logiciel 🧑‍💻" data-en="Software Development 🧑‍💻">Développement Logiciel 🧑‍💻</p>
+                        <p class="skill-item" data-fr="Conception Électronique 🎨" data-en="Electronic Design 🎨">Conception Électronique 🎨</p>
+                        <p class="skill-item" data-fr="Admin Linux 🐧" data-en="Linux Admin 🐧">Admin Linux 🐧</p>
                     </div>
                     <div>
-                        <p class="skill-item">Développement Agile ⚡</p>
-                        <p class="skill-item">Travail d'équipe 🤝</p>
-                        <p class="skill-item">Développement Fullstack 🚀</p>
+                        <p class="skill-item" data-fr="Développement Agile ⚡" data-en="Agile Development ⚡">Développement Agile ⚡</p>
+                        <p class="skill-item" data-fr="Travail d'équipe 🤝" data-en="Teamwork 🤝">Travail d'équipe 🤝</p>
+                        <p class="skill-item" data-fr="Développement Fullstack 🚀" data-en="Fullstack Development 🚀">Développement Fullstack 🚀</p>
                     </div>
                 </div>
             </div>
 
             <!-- Work Experience Section -->
             <div class="work-experience section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Expériences Professionnelles 💼</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Expériences Professionnelles" data-en="Professional Experiences">Expériences Professionnelles</h2>
 
                 <!-- Intelsys SA -->
                 <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-2">
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold h3-style">Stage de 8 semaines</h3>
-                            <p class="font-medium text-lg text-blue-600">Intelsys SA, Athènes, GRECE</p>
+                            <h3 class="text-2xl font-semibold h3-style" data-fr="Stage de 8 semaines" data-en="8-week Internship">Stage de 8 semaines</h3>
+                            <p class="font-medium text-lg text-blue-600" data-fr="Intelsys SA, Athènes, GRECE" data-en="Intelsys SA, Athens, GREECE">Intelsys SA, Athènes, GRECE</p>
                         </div>
                         <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium h3-style">Juillet 2023</h3>
+                            <h3 class="text-lg font-medium h3-style" data-fr="Juillet 2023" data-en="July 2023">Juillet 2023</h3>
                         </div>
                     </div>
                     <ul class="list-disc pl-5 space-y-1">
-                        <li><span class="skill-item">Installation et mise en service des liaisons micro-ondes de Nokia, Huawei, Eriksson. 📡</span></li>
-                        <li><span class="skill-item">Installation de RBS (station de base radio) 4G et 5G (2 mois). 📶</span></li>
+                        <li><span class="skill-item" data-fr="Installation et mise en service des liaisons micro-ondes de Nokia, Huawei, Eriksson. 📡" data-en="Installation and commissioning of Nokia, Huawei, Eriksson microwave links. 📡">Installation et mise en service des liaisons micro-ondes de Nokia, Huawei, Eriksson. 📡</span></li>
+                        <li><span class="skill-item" data-fr="Installation de RBS (station de base radio) 4G et 5G (2 mois). 📶" data-en="Installation of 4G and 5G RBS (radio base station) (2 months). 📶">Installation de RBS (station de base radio) 4G et 5G (2 mois). 📶</span></li>
                     </ul>
                 </div>
 
@@ -231,15 +236,15 @@
                 <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-2">
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold h3-style">Stage de 4 mois</h3>
-                            <p class="font-medium text-lg text-blue-600">DISCOVERY PATH, Athènes, GRECE</p>
+                            <h3 class="text-2xl font-semibold h3-style" data-fr="Stage de 4 mois" data-en="4-month Internship">Stage de 4 mois</h3>
+                            <p class="font-medium text-lg text-blue-600" data-fr="DISCOVERY PATH, Athènes, GRECE" data-en="DISCOVERY PATH, Athens, GREECE">DISCOVERY PATH, Athènes, GRECE</p>
                         </div>
                         <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium h3-style">Mai - Septembre 2024</h3>
+                            <h3 class="text-lg font-medium h3-style" data-fr="Mai - Septembre 2024" data-en="May - September 2024">Mai - Septembre 2024</h3>
                         </div>
                     </div>
                     <ul class="list-disc pl-5 space-y-1">
-                        <li><span class="skill-item">Chargé de la conception et construction d'un réseau maillé complexe des ESP32 pour un bâtiment scolaire connecté. 🌐</span></li>
+                        <li><span class="skill-item" data-fr="Chargé de la conception et construction d'un réseau maillé complexe des ESP32 pour un bâtiment scolaire connecté. 🌐" data-en="Responsible for the design and construction of a complex mesh network of ESP32s for a connected school building. 🌐">Chargé de la conception et construction d'un réseau maillé complexe des ESP32 pour un bâtiment scolaire connecté. 🌐</span></li>
                     </ul>
                 </div>
 
@@ -247,77 +252,78 @@
                 <div class="mb-6 last:mb-0">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-2">
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold h3-style">Data Entry</h3>
-                            <p class="font-medium text-lg text-blue-600">BASIS finance group, Kos, GRECE</p>
+                            <h3 class="text-2xl font-semibold h3-style" data-fr="Data Entry" data-en="Data Entry">Data Entry</h3>
+                            <p class="font-medium text-lg text-blue-600" data-fr="BASIS finance group, Kos, GRECE" data-en="BASIS finance group, Kos, GREECE">BASIS finance group, Kos, GRECE</p>
                         </div>
                         <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium h3-style">Mai - Septembre 2024</h3>
+                            <h3 class="text-lg font-medium h3-style" data-fr="Juillet 2025 - Présent" data-en="July 2025 - Present">Juillet 2025 - Présent</h3>
                         </div>
                     </div>
                     <ul class="list-disc pl-5 space-y-1">
-                        <li><span class="skill-item">Saisie de données financières. 📊</span></li>
+                        <li><span class="skill-item" data-fr="Intégré à l'équipe financière pour la saisie et la gestion des données." data-en="Integrated into the finance team for data entry and management.">Intégré à l'équipe financière pour la saisie et la gestion des données.</span></li>
+                        <li><span class="skill-item" data-fr="Saisie de données financières. 📊" data-en="Financial data entry. 📊">Saisie de données financières. 📊</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Education Section -->
             <div class="formation section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Formation 🎓</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Formation" data-en="Education">Formation</h2>
 
                 <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <h3 class="text-2xl font-semibold h3-style">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)</h3>
-                    <p class="font-medium text-lg text-blue-600">IUT de Velizy, UVSQ, Velizy-Villacoublay (78)</p>
-                    <p class="mb-2 text-gray-700">Septembre 2021 - 2024</p>
+                    <h3 class="text-2xl font-semibold h3-style" data-fr="Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)" data-en="University Bachelor of Technology in Electrical Engineering and Industrial Computing (BUT GEII)">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)</h3>
+                    <p class="font-medium text-lg text-blue-600" data-fr="IUT de Velizy, UVSQ, Velizy-Villacoublay (78)" data-en="IUT of Velizy, UVSQ, Velizy-Villacoublay (78)">IUT de Velizy, UVSQ, Velizy-Villacoublay (78)</p>
+                    <p class="mb-2 text-gray-700" data-fr="Septembre 2021 - 2024 - Diplômé" data-en="September 2021 - 2024 - Graduate">Septembre 2021 - 2024 - Diplômé</p>
                 </div>
 
                 <div>
-                    <h3 class="text-2xl font-semibold h3-style">Diplôme de fin d'études grec (Apolitirion)</h3>
-                    <p class="font-medium text-lg text-blue-600">Équivalent du baccalauréat scientifique</p>
-                    <p class="font-medium text-lg text-blue-600">LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)</p>
-                    <p class="mb-2 text-gray-700">Septembre 2021</p>
+                    <h3 class="text-2xl font-semibold h3-style" data-fr="Diplôme de fin d'études grec (Apolitirion)" data-en="Greek High School Diploma (Apolitirion)">Diplôme de fin d'études grec (Apolitirion)</h3>
+                    <p class="font-medium text-lg text-blue-600" data-fr="Équivalent du baccalauréat scientifique" data-en="Equivalent to scientific baccalaureate">Équivalent du baccalauréat scientifique</p>
+                    <p class="font-medium text-lg text-blue-600" data-fr="LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)" data-en="LFHED - Franco-Hellenic Eugene Delacroix High School (LFhED)">LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)</p>
+                    <p class="mb-2 text-gray-700" data-fr="Septembre 2021" data-en="September 2021">Septembre 2021</p>
                 </div>
             </div>
 
             <!-- Technical Skills Section -->
             <div class="technical-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Compétences Techniques & Informatiques 💻</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Compétences Techniques & Informatiques" data-en="Technical & IT Skills">Compétences Techniques & Informatiques</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style">Électricité et électronique: ⚡</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Électricité et électronique:" data-en="Electricity and electronics:">Électricité et électronique:</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item">Électronique analogique et numérique 🔌</span></li>
-                            <li><span class="skill-item">Conversion d'énergie 🔋</span></li>
-                            <li><span class="skill-item">Transformateurs 🎛️</span></li>
-                            <li><span class="skill-item">Machines à courant continu ⚙️</span></li>
-                            <li><span class="skill-item">Simulation sous LTspice et PSim 📈</span></li>
-                            <li><span class="skill-item">Réalisation de cartes sous Kicad (CAO) 🎨</span></li>
+                            <li><span class="skill-item" data-fr="Électronique analogique et numérique 🔌" data-en="Analog and digital electronics 🔌">Électronique analogique et numérique 🔌</span></li>
+                            <li><span class="skill-item" data-fr="Conversion d'énergie 🔋" data-en="Energy conversion 🔋">Conversion d'énergie 🔋</span></li>
+                            <li><span class="skill-item" data-fr="Transformateurs 🎛️" data-en="Transformers 🎛️">Transformateurs 🎛️</span></li>
+                            <li><span class="skill-item" data-fr="Machines à courant continu ⚙️" data-en="DC machines ⚙️">Machines à courant continu ⚙️</span></li>
+                            <li><span class="skill-item" data-fr="Simulation sous LTspice et PSim 📈" data-en="Simulation with LTspice and PSim 📈">Simulation sous LTspice et PSim 📈</span></li>
+                            <li><span class="skill-item" data-fr="Réalisation de cartes sous Kicad (CAO) 🎨" data-en="PCB design with Kicad (CAD) 🎨">Réalisation de cartes sous Kicad (CAO) 🎨</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style">Automatisme: 🤖</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Automatisme:" data-en="Automation:">Automatisme:</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item">Automates programmables Schneider Grafcet 🚦</span></li>
-                            <li><span class="skill-item">Ladder 🪜</span></li>
+                            <li><span class="skill-item" data-fr="Automates programmables Schneider Grafcet 🚦" data-en="Schneider Grafcet PLCs 🚦">Automates programmables Schneider Grafcet 🚦</span></li>
+                            <li><span class="skill-item" data-fr="Ladder 🪜" data-en="Ladder 🪜">Ladder 🪜</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style">Informatique Industrielle: 🏭</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Informatique Industrielle:" data-en="Industrial IT:">Informatique Industrielle:</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item">Microcontrôleurs C FPGA (logiciel Xilinx) VHDL 💽</span></li>
-                            <li><span class="skill-item">BUS CAN 🚌</span></li>
-                            <li><span class="skill-item">IoT microcontroler 🔗</span></li>
-                            <li><span class="skill-item">FREERTOS ⏱️</span></li>
-                            <li><span class="skill-item">SQL 💾</span></li>
+                            <li><span class="skill-item" data-fr="Microcontrôleurs C FPGA (logiciel Xilinx) VHDL" data-en="Microcontrollers C FPGA (Xilinx software) VHDL">Microcontrôleurs C FPGA (logiciel Xilinx) VHDL</span></li>
+                            <li><span class="skill-item" data-fr="BUS CAN 🚌" data-en="CAN BUS 🚌">BUS CAN 🚌</span></li>
+                            <li><span class="skill-item" data-fr="IoT microcontroler 🔗" data-en="IoT microcontroller 🔗">IoT microcontroler 🔗</span></li>
+                            <li><span class="skill-item" data-fr="FREERTOS ⏱️" data-en="FREERTOS ⏱️">FREERTOS ⏱️</span></li>
+                            <li><span class="skill-item" data-fr="SQL 💾" data-en="SQL 💾">SQL 💾</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style">Informatique: 🧑‍💻</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Informatique:" data-en="IT:">Informatique:</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item">Langage C et C++ 🚀</span></li>
-                            <li><span class="skill-item">Scilab 📊</span></li>
-                            <li><span class="skill-item">LabView 🧪</span></li>
-                            <li><span class="skill-item">Microsoft Office 📄</span></li>
-                            <li><span class="skill-item">Python 🐍</span></li>
+                            <li><span class="skill-item" data-fr="Langage C et C++ 🚀" data-en="C and C++ language 🚀">Langage C et C++ 🚀</span></li>
+                            <li><span class="skill-item" data-fr="Scilab 📊" data-en="Scilab 📊">Scilab 📊</span></li>
+                            <li><span class="skill-item" data-fr="LabView 🧪" data-en="LabView 🧪">LabView 🧪</span></li>
+                            <li><span class="skill-item" data-fr="Microsoft Office 📄" data-en="Microsoft Office 📄">Microsoft Office 📄</span></li>
+                            <li><span class="skill-item" data-fr="Python 🐍" data-en="Python 🐍">Python 🐍</span></li>
                         </ul>
                     </div>
                 </div>
@@ -325,58 +331,58 @@
 
             <!-- Projects Section -->
             <div class="projects section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Projets 🛠️</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Projets" data-en="Projects">Projets</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item">Étude et réalisation d'un thermomètre numérique en technologie traversante. 🌡️</span></li>
-                    <li><span class="skill-item">Commande par un FPGA de la vitesse de rotation d'un moteur à partir d'une télécommande infrarouge. 🏎️</span></li>
-                    <li><span class="skill-item">Banc de test contrôlé par une carte numérique (décodage trame, FPGA...). 🔬</span></li>
-                    <li><span class="skill-item">Mesure de distance (capteur à ultrason). 📏</span></li>
-                    <li><span class="skill-item">Affichage de mesures avec une carte Raspberry Pi. 🖥️</span></li>
-                    <li><span class="skill-item">Acquisition de mesures avec une carte Sleepy Bee. 🐝</span></li>
-                    <li><span class="skill-item">Voiture autonome avec lidar. 🚗</span></li>
-                    <li><span class="skill-item">Réalisation d'un bras robot automatique. 🦾</span></li>
-                    <li><span class="skill-item">Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi. 🌐</span></li>
+                    <li><span class="skill-item" data-fr="Étude et réalisation d'un thermomètre numérique en technologie traversante. 🌡️" data-en="Study and realization of a digital thermometer using through-hole technology. 🌡️">Étude et réalisation d'un thermomètre numérique en technologie traversante. 🌡️</span></li>
+                    <li><span class="skill-item" data-fr="Commande par un FPGA de la vitesse de rotation d'un moteur à partir d'une télécommande infrarouge. 🏎️" data-en="FPGA control of motor rotation speed from an infrared remote control. 🏎️">Commande par un FPGA de la vitesse de rotation d'un moteur à partir d'une télécommande infrarouge. 🏎️</span></li>
+                    <li><span class="skill-item" data-fr="Banc de test contrôlé par une carte numérique (décodage trame, FPGA...). 🔬" data-en="Test bench controlled by a digital board (frame decoding, FPGA...). 🔬">Banc de test contrôlé par une carte numérique (décodage trame, FPGA...). 🔬</span></li>
+                    <li><span class="skill-item" data-fr="Mesure de distance (capteur à ultrason). 📏" data-en="Distance measurement (ultrasonic sensor). 📏">Mesure de distance (capteur à ultrason). 📏</span></li>
+                    <li><span class="skill-item" data-fr="Affichage de mesures avec une carte Raspberry Pi. 🖥️" data-en="Display measurements with a Raspberry Pi board. 🖥️">Affichage de mesures avec une carte Raspberry Pi. 🖥️</span></li>
+                    <li><span class="skill-item" data-fr="Acquisition de mesures avec une carte Sleepy Bee. 🐝" data-en="Measurement acquisition with a Sleepy Bee board. 🐝">Acquisition de mesures avec une carte Sleepy Bee. 🐝</span></li>
+                    <li><span class="skill-item" data-fr="Voiture autonome avec lidar. 🚗" data-en="Autonomous car with lidar. 🚗">Voiture autonome avec lidar. 🚗</span></li>
+                    <li><span class="skill-item" data-fr="Réalisation d'un bras robot automatique. 🦾" data-en="Realization of an automatic robotic arm. 🦾">Réalisation d'un bras robot automatique. 🦾</span></li>
+                    <li><span class="skill-item" data-fr="Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi. 🌐" data-en="Realization of a decentralized sensor system using ESP32 and Raspberry Pi. 🌐">Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi. 🌐</span></li>
                 </ul>
             </div>
 
             <!-- Languages Section -->
             <div class="languages section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Langues 🗣️</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Langues" data-en="Languages">Langues</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item">ANGLAIS - niveau C1 (TOEIC) 🇬🇧</span></li>
-                    <li><span class="skill-item">FRANCAIS 🇫🇷</span></li>
-                    <li><span class="skill-item">GREC - Langue maternelle 🇬🇷</span></li>
+                    <li><span class="skill-item" data-fr="ANGLAIS - niveau C1 (TOEIC) 🇬🇧" data-en="ENGLISH - C1 level (TOEIC) 🇬🇧">ANGLAIS - niveau C1 (TOEIC) 🇬🇧</span></li>
+                    <li><span class="skill-item" data-fr="FRANCAIS 🇫🇷" data-en="FRENCH 🇫🇷">FRANCAIS 🇫🇷</span></li>
+                    <li><span class="skill-item" data-fr="GREC - Langue maternelle 🇬🇷" data-en="GREEK - Native language 🇬🇷">GREC - Langue maternelle 🇬🇷</span></li>
                 </ul>
             </div>
 
             <!-- Interests Section -->
             <div class="interests section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Centres d'intérêt & Hobbies 🏄</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Centres d'intérêt & Hobbies" data-en="Interests & Hobbies">Centres d'intérêt & Hobbies</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item">Scout marin (11 années) ⛵</span></li>
-                    <li><span class="skill-item">Water polo (6 années) 🏊</span></li>
-                    <li><span class="skill-item">Kick boxing (3 années) 🥊</span></li>
-                    <li><span class="skill-item">Sailing (navigation à voile) ⚓</span></li>
-                    <li><span class="skill-item">Responsable technique son et lumière dans des spectacles scolaires au Lycée Franco-Hellénique d'Athènes 🎭</span></li>
+                    <li><span class="skill-item" data-fr="Scout marin (11 années) ⛵" data-en="Sea scout (11 years) ⛵">Scout marin (11 années) ⛵</span></li>
+                    <li><span class="skill-item" data-fr="Water polo (6 années) 🏊" data-en="Water polo (6 years) 🏊">Water polo (6 années) 🏊</span></li>
+                    <li><span class="skill-item" data-fr="Kick boxing (3 années) 🥊" data-en="Kick boxing (3 years) 🥊">Kick boxing (3 années) 🥊</span></li>
+                    <li><span class="skill-item" data-fr="Sailing (navigation à voile) ⚓" data-en="Sailing ⚓">Sailing (navigation à voile) ⚓</span></li>
+                    <li><span class="skill-item" data-fr="Responsable technique son et lumière dans des spectacles scolaires au Lycée Franco-Hellénique d'Athènes 🎭" data-en="Sound and lighting technical manager for school performances at the Franco-Hellenic School of Athens 🎭">Responsable technique son et lumière dans des spectacles scolaires au Lycée Franco-Hellénique d'Athènes 🎭</span></li>
                 </ul>
             </div>
 
             <!-- Soft Skills Section -->
             <div class="soft-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2">Soft Skills ✨</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Soft Skills" data-en="Soft Skills">Soft Skills</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item">CRÉATIVITÉ 💡</span></li>
-                    <li><span class="skill-item">VISUALISATION 🧠</span></li>
-                    <li><span class="skill-item">CURIOSITÉ 🧐</span></li>
-                    <li><span class="skill-item">ADAPTATION 🔄</span></li>
-                    <li><span class="skill-item">TRAVAIL EN ÉQUIPE 🤝</span></li>
+                    <li><span class="skill-item" data-fr="CRÉATIVITÉ" data-en="CREATIVITY">CRÉATIVITÉ</span></li>
+                    <li><span class="skill-item" data-fr="VISUALISATION" data-en="VISUALIZATION">VISUALISATION</span></li>
+                    <li><span class="skill-item" data-fr="CURIOSITÉ" data-en="CURIOSITY">CURIOSITÉ</span></li>
+                    <li><span class="skill-item" data-fr="ADAPTATION" data-en="ADAPTATION">ADAPTATION</span></li>
+                    <li><span class="skill-item" data-fr="TRAVAIL EN ÉQUIPE" data-en="TEAMWORK">TRAVAIL EN ÉQUIPE</span></li>
                 </ul>
             </div>
 
             <!-- Footer Section -->
             <footer class="mt-8 bg-gray-800 text-white p-6 sm:p-8 rounded-xl shadow-lg text-center">
-                <p class="text-sm">&copy; 2025 Michail Tsimpidaros. Tous droits réservés.</p>
-                <p class="text-sm mt-2">Réalisé avec passion et code.</p>
+                <p class="text-sm" id="footerRights" data-fr="&copy; 2025 Michail Tsimpidaros. Tous droits réservés." data-en="&copy; 2025 Michail Tsimpidaros. All rights reserved.">&copy; 2025 Michail Tsimpidaros. Tous droits réservés.</p>
+                <p class="text-sm mt-2" data-fr="Réalisé avec passion et code." data-en="Made with passion and code.">Réalisé avec passion et code.</p>
             </footer>
         </div>
     </div>
@@ -385,39 +391,81 @@
         document.addEventListener("DOMContentLoaded", function() {
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = document.getElementById('themeIcon');
-            const htmlElement = document.documentElement; // Get the html tag
+            const languageToggle = document.getElementById('languageToggle');
+            const languageText = document.getElementById('languageText');
+            const htmlElement = document.documentElement;
 
-            // Function to set the theme
+            // --- Theme Toggle Logic ---
             function setTheme(theme) {
                 if (theme === 'dark') {
                     htmlElement.classList.add('dark-mode');
-                    themeIcon.textContent = '🌙'; // Moon icon for dark mode
+                    themeIcon.textContent = '🌙';
                     localStorage.setItem('theme', 'dark');
                 } else {
                     htmlElement.classList.remove('dark-mode');
-                    themeIcon.textContent = '☀️'; // Sun icon for light mode
+                    themeIcon.textContent = '☀️';
                     localStorage.setItem('theme', 'light');
                 }
             }
 
-            // Check for saved theme preference or default to light, or respect OS preference
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 setTheme(savedTheme);
             } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // Check OS preference if no theme saved
                 setTheme('dark');
             } else {
                 setTheme('light');
             }
 
-            // Toggle theme on button click
             themeToggle.addEventListener('click', () => {
                 const currentTheme = htmlElement.classList.contains('dark-mode') ? 'dark' : 'light';
                 setTheme(currentTheme === 'light' ? 'dark' : 'light');
+            });
+
+            // --- Language Toggle Logic ---
+            // Only store simple key-value pairs here for elements without data-fr/data-en attributes
+            // The main translation logic now relies on data-fr/data-en attributes directly in the HTML.
+            const translations = {
+                fr: {
+                    cvTitle: "Michail Tsimpidaros - CV",
+                },
+                en: {
+                    cvTitle: "Michail Tsimpidaros - CV",
+                }
+            };
+
+            let currentLanguage = localStorage.getItem('language') || 'fr'; // Default to French
+
+            function updateLanguage() {
+                // Update the button text
+                languageText.textContent = currentLanguage === 'fr' ? 'EN' : 'FR';
+                // Update the title element (which doesn't have data-fr/data-en attributes)
+                document.getElementById('cvTitle').textContent = translations[currentLanguage].cvTitle;
+
+
+                // Loop through all elements with data-fr attribute and update their content
+                document.querySelectorAll('[data-fr]').forEach(element => {
+                    // Special handling for footer copyright due to HTML entity
+                    if (element.id === 'footerRights') {
+                        element.innerHTML = currentLanguage === 'fr' ? element.dataset.fr : element.dataset.en;
+                    } else {
+                        element.textContent = currentLanguage === 'fr' ? element.dataset.fr : element.dataset.en;
+                    }
+                });
+            }
+
+            // Set initial language
+            updateLanguage();
+
+            languageToggle.addEventListener('click', () => {
+                currentLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
+                localStorage.setItem('language', currentLanguage);
+                updateLanguage();
             });
         });
     </script>
 </body>
 </html>
+
+
 

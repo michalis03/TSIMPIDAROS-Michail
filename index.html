@@ -22,6 +22,9 @@
             --border-color-light: #d1d5db; /* gray-300 */
             --section-border-color: #3b82f6; /* blue-500 */
             --skill-hover-bg: #e0f2fe; /* light blue */
+            --button-bg-light: #e2e8f0;
+            --button-text-light: #2d3748;
+            --button-bg-light-hover: #cbd5e0;
         }
 
         html.dark-mode { /* Dark theme variables */
@@ -36,6 +39,9 @@
             --border-color-light: #4a5568; /* dark gray */
             --section-border-color: #63b3ed; /* light blue */
             --skill-hover-bg: #4a5568; /* dark gray for hover */
+            --button-bg-dark: #4a5568;
+            --button-text-dark: #edf2f7;
+            --button-bg-dark-hover: #636b77;
         }
 
         body {
@@ -43,25 +49,19 @@
             background-color: var(--bg-color-main);
             line-height: 1.6;
             color: var(--text-color-main);
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         /* Custom scrollbar for a cleaner look */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #e0e0e0;
+            background: var(--border-color-light);
             border-radius: 10px;
-        }
-        html.dark-mode ::-webkit-scrollbar-track {
-            background: #333;
         }
         ::-webkit-scrollbar-thumb {
-            background: #a0a0a0;
+            background: var(--contact-text-color);
             border-radius: 10px;
-        }
-        html.dark-mode ::-webkit-scrollbar-thumb {
-            background: #555;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #808080;
@@ -73,10 +73,10 @@
         /* General section card styling */
         .section-card {
             background-color: var(--card-bg-color);
-            padding: 1.5rem 2rem; /* p-6 sm:p-8 */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
-            margin-bottom: 2rem; /* mb-8 */
+            padding: 1.5rem 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
             transition: all 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .section-card:hover {
@@ -86,26 +86,25 @@
 
         /* Skill item hover effect */
         .skill-item {
-            display: inline-block; /* Allows padding and background */
+            display: inline-block;
             transition: all 0.2s ease-in-out;
-            border-radius: 0.375rem; /* rounded-md */
-            padding: 0.25rem 0.5rem; /* px-2 py-1 */
-            margin: 0.125rem 0; /* Slight margin for spacing */
-            cursor: default; /* Indicate it's not a clickable link */
-            color: var(--text-color-main); /* Ensure skill item text follows theme */
+            border-radius: 0.375rem;
+            padding: 0.25rem 0.5rem;
+            margin: 0.125rem 0;
+            cursor: default;
+            color: var(--text-color-main);
         }
         .skill-item:hover {
             background-color: var(--skill-hover-bg);
-            transform: translateY(-2px) scale(1.02); /* Slight lift and scale */
+            transform: translateY(-2px) scale(1.02);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
-        /* Applying theme variables to elements - Specificity adjustments */
-        h1, .h1-style { color: var(--heading-color); } /* Added .h1-style for flexibility */
-        h3, .h3-style { color: var(--subheading-color); } /* Added .h3-style for flexibility */
-        h4, .h4-style { color: var(--contact-text-color); } /* Added .h4-style for flexibility */
+        /* Applying theme variables to elements */
+        h1, .h1-style { color: var(--heading-color); }
+        h3, .h3-style { color: var(--subheading-color); }
+        h4, .h4-style { color: var(--contact-text-color); }
 
-        /* Override specific Tailwind classes with CSS variables */
         .text-gray-600 { color: var(--contact-text-color) !important; }
         .text-blue-500 { color: var(--link-color) !important; }
         .hover\:text-blue-700:hover { color: var(--link-hover-color) !important; }
@@ -115,26 +114,50 @@
         .text-gray-800 { color: var(--heading-color) !important; }
         .text-gray-900 { color: var(--heading-color) !important; }
         .border-blue-500 { border-color: var(--section-border-color) !important; }
-        .border-gray-200 { border-color: var(--border-color-light) !important; } /* For borders in experience/education */
+        .border-gray-200 { border-color: var(--border-color-light) !important; }
         .border-gray-300 { border-color: var(--border-color-light) !important; }
-        .hr { border-color: var(--border-color-light) !important; } /* For the <hr> tag */
+        .hr { border-color: var(--border-color-light) !important; }
 
+        /* Styles for the new Download Button */
+        .download-button {
+            background-color: var(--subheading-color);
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease, width 0.3s ease, padding 0.3s ease;
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden; /* Hide overflow content */
+            width: 40px; /* Initial width for just the icon */
+            padding: 8px; /* Consistent padding for icon */
+        }
+        .download-button:hover {
+            background-color: var(--link-hover-color);
+            transform: scale(1.05);
+            width: 150px; /* Expand width on hover to show text */
+            padding: 8px 16px; /* Adjust padding for text */
+        }
+        .download-button span {
+            display: none; /* Hide text initially */
+            margin-left: 8px; /* Space between icon and text */
+            transition: display 0.3s ease, margin-left 0.3s ease;
+        }
+        .download-button:hover span {
+            display: inline; /* Show text on hover */
+        }
 
-        /* Specific styles for the theme toggle button */
+        /* Specific styles for the theme and language toggles */
         #themeToggle, #languageToggle {
-            background-color: #e2e8f0; /* Light button background */
-            color: #2d3748; /* Dark icon color */
+            background-color: var(--button-bg-light);
+            color: var(--button-text-light);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        html.dark-mode #themeToggle, html.dark-mode #languageToggle {
-            background-color: #4a5568; /* Dark button background */
-            color: #edf2f7; /* Light icon color */
-        }
         #themeToggle:hover, #languageToggle:hover {
-            background-color: #cbd5e0; /* Lighter hover */
+            background-color: var(--button-bg-light-hover);
+        }
+        html.dark-mode #themeToggle, html.dark-mode #languageToggle {
+            background-color: var(--button-bg-dark);
+            color: var(--button-text-dark);
         }
         html.dark-mode #themeToggle:hover, html.dark-mode #languageToggle:hover {
-            background-color: #636b77; /* Darker hover */
+            background-color: var(--button-bg-dark-hover);
         }
     </style>
 </head>
@@ -143,14 +166,24 @@
         <div class="max-w-4xl mx-auto">
             <!-- Title Section -->
             <div class="text-center mb-10 p-8 rounded-xl shadow-xl relative section-card">
+                <!-- Download CV Button - positioned top-left -->
+                <a href="https://www.canva.com/design/DAE0frvMnzw/O18WpLDmr097sUzPzlflHg/view?utm_content=DAE0frvMnzw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc809747e16" class="absolute top-4 left-4 rounded-md shadow-md text-sm font-semibold flex items-center justify-center download-button" download>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                    <span data-fr="Télécharger CV" data-en="Download CV">Télécharger CV</span>
+                </a>
+
+                <!-- Theme and Language Toggles - positioned top-right -->
                 <div class="absolute top-4 right-4 flex gap-2">
                     <button id="themeToggle" class="p-2 rounded-full shadow-md flex items-center justify-center">
-                        <span id="themeIcon" class="text-xl">☀️</span> <!-- Sun/Moon emoji -->
+                        <span id="themeIcon" class="text-xl">☀️</span>
                     </button>
                     <button id="languageToggle" class="p-2 rounded-full shadow-md text-sm font-semibold flex items-center justify-center">
-                        <span id="languageText">EN</span> <!-- Language text -->
+                        <span id="languageText">EN</span>
                     </button>
                 </div>
+
                 <h1 class="text-5xl sm:text-6xl font-extrabold mb-2 leading-tight h1-style" data-fr="Michail Tsimpidaros" data-en="Michail Tsimpidaros">Michail Tsimpidaros</h1>
                 <h3 class="text-xl sm:text-2xl font-medium mb-4 h3-style" data-fr="Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)" data-en="Graduate in Electrical Engineering and Industrial Computing (BUT GEII)">Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)</h3>
                 <h4 class="text-lg h4-style">
@@ -355,7 +388,7 @@
                     <li><span class="skill-item" data-fr="Acquisition de mesures avec une carte Sleepy Bee." data-en="Measurement acquisition with a Sleepy Bee board.">Acquisition de mesures avec une carte Sleepy Bee.</span></li>
                     <li><span class="skill-item" data-fr="Voiture autonome avec lidar." data-en="Autonomous car with lidar.">Voiture autonome avec lidar.</span></li>
                     <li><span class="skill-item" data-fr="Réalisation d'un bras robot automatique." data-en="Realization of an automatic robotic arm.">Réalisation d'un bras robot automatique.</span></li>
-                    <li><span class="skill-item" data-fr="Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi." data-en="Realization of a decentralized sensor system using ESP32 and Raspberry Pi.">Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi.</span></li>
+                    <li><span class="skill-item" data-fr="Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi." data-en="Realization of a decentralized sensor system using ESP32 and Raspberry Pi.">Réalisation d'un système décentralisé de capteurs en utilisant ESP32 and Raspberry Pi.</span></li>
                 </ul>
             </div>
 
@@ -365,7 +398,7 @@
                 <ul class="list-disc pl-5 space-y-1">
                     <li><span class="skill-item" data-fr="ANGLAIS - niveau C1 (TOEIC) 🇬🇧" data-en="ENGLISH - C1 level (TOEIC) 🇬🇧">ANGLAIS - niveau C1 (TOEIC) 🇬🇧</span></li>
                     <li><span class="skill-item" data-fr="FRANCAIS 🇫🇷" data-en="FRENCH 🇫🇷">FRANCAIS 🇫🇷</span></li>
-                    <li><span class="skill-item" data-fr="GREC - Langue maternelle 🇬🇷" data-en="GREEK - Native language 🇬🇷">GREC - Langue maternelle �🇷</span></li>
+                    <li><span class="skill-item" data-fr="GREC - Langue maternelle 🇬🇷" data-en="GREEK - Native language 🇬🇷">GREC - Langue maternelle 🇬🇷</span></li>
                 </ul>
             </div>
 
@@ -409,6 +442,8 @@
             const languageText = document.getElementById('languageText');
             const htmlElement = document.documentElement;
             const cvTitleElement = document.getElementById('cvTitle');
+            const downloadButton = document.querySelector('.download-button');
+            const downloadButtonText = downloadButton.querySelector('span');
 
             // --- Theme Toggle Logic ---
             function setTheme(theme) {
@@ -423,62 +458,46 @@
                 }
             }
 
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                setTheme('dark');
-            } else {
-                setTheme('light');
-            }
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            setTheme(savedTheme);
 
             themeToggle.addEventListener('click', () => {
-                const currentTheme = localStorage.getItem('theme');
-                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+                const newTheme = htmlElement.classList.contains('dark-mode') ? 'light' : 'dark';
+                setTheme(newTheme);
             });
 
             // --- Language Toggle Logic ---
-            function setLanguage(lang) {
-                // Update elements with data-lang attributes
-                document.querySelectorAll('[data-fr], [data-en]').forEach(element => {
-                    if (lang === 'fr' && element.dataset.fr) {
-                        element.textContent = element.dataset.fr;
-                    } else if (lang === 'en' && element.dataset.en) {
-                        element.textContent = element.dataset.en;
+            let isFrench = true;
+
+            function updateText() {
+                const lang = isFrench ? 'fr' : 'en';
+                languageText.textContent = isFrench ? 'FR' : 'EN';
+                cvTitleElement.textContent = `Michail Tsimpidaros - CV (${lang.toUpperCase()})`;
+
+                document.querySelectorAll('[data-fr], [data-en]').forEach(el => {
+                    const text = el.getAttribute(`data-${lang}`);
+                    if (text) {
+                        el.textContent = text;
                     }
                 });
-
-                // Special handling for the document title
-                if (cvTitleElement) {
-                    // Check if data-fr or data-en exists on cvTitleElement itself
-                    const titleFr = cvTitleElement.getAttribute('data-fr') || 'Michail Tsimpidaros';
-                    const titleEn = cvTitleElement.getAttribute('data-en') || 'Michail Tsimpidaros';
-
-                    if (lang === 'fr') {
-                        document.title = titleFr + ' - CV';
-                    } else if (lang === 'en') {
-                        document.title = titleEn + ' - CV';
-                    }
-                }
-
-                // Update the language toggle button text
-                languageText.textContent = lang.toUpperCase();
-                // Store selected language in local storage
-                localStorage.setItem('language', lang);
-                // Update the lang attribute of the html tag
-                htmlElement.lang = lang;
-            }
-
-            const savedLanguage = localStorage.getItem('language');
-            if (savedLanguage) {
-                setLanguage(savedLanguage);
-            } else {
-                setLanguage('fr'); // Default to French if no language is saved
             }
 
             languageToggle.addEventListener('click', () => {
-                const currentLang = localStorage.getItem('language');
-                setLanguage(currentLang === 'fr' ? 'en' : 'fr');
+                isFrench = !isFrench;
+                updateText();
+            });
+
+            // Initial text update based on default language (French)
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage === 'en') {
+                isFrench = false;
+            }
+            updateText();
+
+            // Save language preference on toggle
+            languageToggle.addEventListener('click', () => {
+                localStorage.setItem('language', isFrench ? 'fr' : 'en');
             });
         });
     </script>

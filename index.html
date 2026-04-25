@@ -5,186 +5,468 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CV de Michail Tsimpidaros — Ingénieur en Génie Électrique et Informatique Industrielle. Systèmes embarqués, IoT, FPGA, automatisation.">
     <meta name="author" content="Michail Tsimpidaros">
-    <title id="cvTitle">Michail Tsimpidaros - Electrical & Embedded Systems Engineer - CV</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
+    <title id="cvTitle">Michail Tsimpidaros — Electrical & Embedded Systems Engineer</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+
     <style>
-        /* CSS Variables for theming */
         :root {
-            --bg-color-main: #f3f4f6;
-            --text-color-main: #333;
-            --card-bg-color: #ffffff;
-            --heading-color: #1f2937;
-            --subheading-color: #2563eb;
-            --contact-text-color: #4b5563;
-            --link-color: #3b82f6;
-            --link-hover-color: #1d4ed8;
-            --border-color-light: #d1d5db;
-            --section-border-color: #3b82f6;
-            --skill-hover-bg: #e0f2fe;
-            --button-bg-light: #e2e8f0;
-            --button-text-light: #2d3748;
-            --button-bg-light-hover: #cbd5e0;
+            --bg: #fafaf9;
+            --surface: #ffffff;
+            --surface-2: #f4f4f3;
+            --border: #e7e5e4;
+            --border-strong: #d6d3d1;
+            --text: #1c1917;
+            --text-muted: #57534e;
+            --text-subtle: #78716c;
+            --accent: #ea580c;
+            --accent-hover: #c2410c;
+            --accent-soft: #fff7ed;
+            --accent-ring: rgba(234, 88, 12, 0.18);
+            --font-display: 'Space Grotesk', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+            --radius-sm: 6px;
+            --radius: 10px;
         }
 
         html.dark-mode {
-            --bg-color-main: #1a202c;
-            --text-color-main: #e2e8f0;
-            --card-bg-color: #2d3748;
-            --heading-color: #edf2f7;
-            --subheading-color: #90cdf4;
-            --contact-text-color: #a0aec0;
-            --link-color: #63b3ed;
-            --link-hover-color: #90cdf4;
-            --border-color-light: #4a5568;
-            --section-border-color: #63b3ed;
-            --skill-hover-bg: #4a5568;
-            --button-bg-dark: #4a5568;
-            --button-text-dark: #edf2f7;
-            --button-bg-dark-hover: #636b77;
+            --bg: #0c0a09;
+            --surface: #1c1917;
+            --surface-2: #292524;
+            --border: #292524;
+            --border-strong: #44403c;
+            --text: #fafaf9;
+            --text-muted: #d6d3d1;
+            --text-subtle: #a8a29e;
+            --accent: #fb923c;
+            --accent-soft: rgba(251, 146, 60, 0.12);
+            --accent-ring: rgba(251, 146, 60, 0.28);
         }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color-main);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: var(--text-color-main);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track {
-            background: var(--border-color-light);
-            border-radius: 10px;
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            margin: 0;
         }
+
+        a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
+        a:hover { color: var(--accent); }
+
+        ul { margin: 0; padding: 0; list-style: none; }
+
+        ::selection { background: var(--accent); color: white; }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb {
-            background: var(--contact-text-color);
+            background: var(--border-strong);
             border-radius: 10px;
+            border: 2px solid var(--bg);
         }
-        ::-webkit-scrollbar-thumb:hover { background: #808080; }
-        html.dark-mode ::-webkit-scrollbar-thumb:hover { background: #777; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
 
-        /* Section card */
-        .section-card {
-            background-color: var(--card-bg-color);
-            padding: 1.5rem 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 4rem;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 2rem;
-            transition: box-shadow 0.3s ease, background-color 0.3s ease;
-        }
-        .section-card:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+            gap: 0.75rem;
+            flex-wrap: wrap;
         }
 
-        /* Tag-style skill items (for actual skill chips, not body bullets) */
-        .skill-tag {
-            display: inline-block;
-            transition: all 0.2s ease-in-out;
-            border-radius: 0.375rem;
-            padding: 0.25rem 0.5rem;
-            margin: 0.125rem 0;
-            cursor: default;
-            color: var(--text-color-main);
-        }
-        .skill-tag:hover {
-            background-color: var(--skill-hover-bg);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Theme variable mappings */
-        h1, .h1-style { color: var(--heading-color); }
-        h3, .h3-style { color: var(--subheading-color); }
-        h4, .h4-style { color: var(--contact-text-color); }
-
-        .text-gray-600 { color: var(--contact-text-color) !important; }
-        .text-blue-500 { color: var(--link-color) !important; }
-        .hover\:text-blue-700:hover { color: var(--link-hover-color) !important; }
-        .text-blue-600 { color: var(--subheading-color) !important; }
-        .hover\:text-blue-600:hover { color: var(--link-hover-color) !important; }
-        .text-gray-700 { color: var(--text-color-main) !important; }
-        .text-gray-800 { color: var(--heading-color) !important; }
-        .text-gray-900 { color: var(--heading-color) !important; }
-        .border-blue-500 { border-color: var(--section-border-color) !important; }
-        .border-gray-200 { border-color: var(--border-color-light) !important; }
-        .border-gray-300 { border-color: var(--border-color-light) !important; }
-        .hr { border-color: var(--border-color-light) !important; }
-
-        /* Download button — mobile-friendly: always shows label */
-        .download-button {
-            background-color: var(--subheading-color);
-            color: white;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            white-space: nowrap;
-            padding: 0.5rem 0.875rem;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 0.9rem;
+            border-radius: var(--radius);
             font-size: 0.875rem;
+            font-weight: 500;
+            font-family: var(--font-body);
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        .btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+        .btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--accent-ring);
+            border-color: var(--accent);
+        }
+        .btn-primary {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+        .btn-primary:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .btn-icon {
+            padding: 0.55rem;
+            min-width: 40px;
+            justify-content: center;
+        }
+        .controls { display: flex; gap: 0.5rem; }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            padding: 2rem 0 2.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin: 0.25rem 0 0.75rem;
+        }
+
+        .hero .role {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero .pitch {
+            font-size: 1.0625rem;
+            color: var(--text-muted);
+            max-width: 60ch;
+            margin: 0;
+        }
+
+        .contact-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .contact-strip a, .contact-strip span {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
         }
-        .download-button:hover,
-        .download-button:focus-visible {
-            background-color: var(--link-hover-color);
-            transform: scale(1.04);
-        }
-        .download-button:focus-visible {
-            outline: 2px solid var(--link-hover-color);
-            outline-offset: 2px;
+        .contact-strip svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+            flex-shrink: 0;
         }
 
-        /* Theme & language toggles */
-        #themeToggle, #languageToggle {
-            background-color: var(--button-bg-light);
-            color: var(--button-text-light);
-            transition: background-color 0.3s ease, color 0.3s ease;
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
         }
-        #themeToggle:hover, #languageToggle:hover,
-        #themeToggle:focus-visible, #languageToggle:focus-visible {
-            background-color: var(--button-bg-light-hover);
-        }
-        #themeToggle:focus-visible, #languageToggle:focus-visible {
-            outline: 2px solid var(--subheading-color);
-            outline-offset: 2px;
-        }
-        html.dark-mode #themeToggle, html.dark-mode #languageToggle {
-            background-color: var(--button-bg-dark);
-            color: var(--button-text-dark);
-        }
-        html.dark-mode #themeToggle:hover, html.dark-mode #languageToggle:hover {
-            background-color: var(--button-bg-dark-hover);
+        .tech-tag {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid var(--accent-ring);
         }
 
-        /* Header layout: stack toggles & download nicely on mobile */
-        .header-controls {
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        @media (min-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr 280px;
+                gap: 3.5rem;
+            }
+            .sidebar {
+                position: sticky;
+                top: 2rem;
+                align-self: start;
+                max-height: calc(100vh - 4rem);
+                overflow-y: auto;
+                padding-right: 0.5rem;
+            }
+        }
+
+        section { margin-bottom: 2.5rem; }
+        section:last-child { margin-bottom: 0; }
+
+        .section-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .sidebar .section-title { font-size: 0.7rem; }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            padding-bottom: 1.75rem;
+            border-left: 1px solid var(--border);
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0.4rem;
+            width: 9px;
+            height: 9px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--bg);
+        }
+
+        .item-date {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-subtle);
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.02em;
+        }
+        .item-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+        .item-org {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.65rem;
+        }
+        .item-bullets {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .item-bullets li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .item-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 4px;
+            height: 1px;
+            background: var(--text-subtle);
+        }
+
+        .skill-group { margin-bottom: 1.5rem; }
+        .skill-group:last-child { margin-bottom: 0; }
+        .skill-group-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .chip {
+            display: inline-block;
+            font-size: 0.78rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--radius-sm);
+            background: var(--surface-2);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            transition: all 0.15s ease;
+        }
+        .chip:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--accent-ring);
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.65rem;
+        }
+        @media (min-width: 600px) {
+            .project-list { grid-template-columns: 1fr 1fr; }
+        }
+        .project-item {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding: 0.6rem 0.75rem;
+            border-radius: var(--radius-sm);
+            background: var(--surface-2);
+            border-left: 2px solid var(--accent);
+            line-height: 1.45;
+        }
+
+        .edu-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .edu-item:last-child { border-bottom: none; }
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.25rem;
+        }
+        .edu-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .edu-date {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-subtle);
+            white-space: nowrap;
+        }
+        .edu-org {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+        .edu-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .lang-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+        @media (min-width: 600px) {
+            .lang-list { grid-template-columns: repeat(3, 1fr); }
+        }
+        .lang-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            padding: 0.6rem 0.85rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+        }
+        .lang-name { font-weight: 500; color: var(--text); }
+        .lang-level { font-size: 0.78rem; color: var(--text-subtle); font-family: var(--font-mono); }
+
+        .simple-list {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .simple-list li {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .simple-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+
+        .softskill-chips {
+            display: flex;
             flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        /* Print styles — clean printout for those who print to PDF from browser */
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-subtle);
+        }
+        footer p { margin: 0.2rem 0; }
+
         @media print {
-            body { background: white !important; color: black !important; }
-            .section-card {
-                box-shadow: none !important;
-                border: 1px solid #ddd;
-                page-break-inside: avoid;
-                margin-bottom: 1rem;
-            }
-            #themeToggle, #languageToggle, .download-button { display: none !important; }
-            a { color: black !important; text-decoration: none !important; }
-            .section-card:hover { transform: none !important; }
+            body { background: white; color: black; font-size: 10pt; }
+            .topbar { display: none; }
+            .grid { grid-template-columns: 1fr 240px !important; gap: 2rem !important; }
+            .sidebar { position: static; max-height: none; overflow: visible; }
+            section { page-break-inside: avoid; margin-bottom: 1.5rem; }
+            .timeline-item { page-break-inside: avoid; }
+            .hero { padding: 0 0 1rem; margin-bottom: 1.5rem; }
+            .hero h1 { font-size: 28pt; }
+            a { color: black !important; }
         }
 
-        /* Reduced motion — respect users who prefer no animation */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -193,429 +475,327 @@
         }
     </style>
 </head>
-<body class="antialiased">
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-        <div class="max-w-4xl mx-auto">
-            <!-- Title Section -->
-            <div class="text-center mb-10 p-6 sm:p-8 rounded-xl shadow-xl section-card">
-                <!-- Header controls: download on the left, theme/lang on the right (responsive) -->
-                <div class="header-controls">
-                    <a href="https://www.canva.com/design/DAE0frvMnzw/O18WpLDmr097sUzPzlflHg/view?utm_content=DAE0frvMnzw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc809747e16"
-                       class="rounded-md shadow-md font-semibold download-button"
-                       download
-                       aria-label="Download CV as PDF">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                        </svg>
-                        <span data-fr="Télécharger CV" data-en="Download CV">Télécharger CV</span>
-                    </a>
+<body>
+    <div class="page">
 
-                    <div class="flex gap-2">
-                        <button id="themeToggle"
-                                class="p-2 rounded-full shadow-md flex items-center justify-center"
-                                aria-label="Toggle dark mode">
-                            <span id="themeIcon" class="text-xl" aria-hidden="true">☀️</span>
-                        </button>
-                        <button id="languageToggle"
-                                class="p-2 rounded-full shadow-md text-sm font-semibold flex items-center justify-center min-w-[44px]"
-                                aria-label="Switch language">
-                            <span id="languageText">EN</span>
-                        </button>
-                    </div>
-                </div>
+        <div class="topbar">
+            <a href="https://www.canva.com/design/DAE0frvMnzw/O18WpLDmr097sUzPzlflHg/view?utm_content=DAE0frvMnzw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc809747e16"
+               class="btn btn-primary"
+               download
+               aria-label="Download CV as PDF">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-fr="Télécharger CV" data-en="Download CV">Télécharger CV</span>
+            </a>
 
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-2 leading-tight h1-style">Michail Tsimpidaros</h1>
-                <h3 class="text-xl sm:text-2xl font-medium mb-2 h3-style"
-                    data-fr="Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)"
-                    data-en="Graduate in Electrical Engineering and Industrial Computing (BUT GEII)">
-                    Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)
-                </h3>
-                <p class="text-lg leading-relaxed text-gray-700 mb-4 max-w-2xl mx-auto"
+            <div class="controls">
+                <button id="themeToggle" class="btn btn-icon" aria-label="Toggle dark mode">
+                    <span id="themeIcon" aria-hidden="true">☀</span>
+                </button>
+                <button id="languageToggle" class="btn" aria-label="Switch language">
+                    <span id="languageText">EN</span>
+                </button>
+            </div>
+        </div>
+
+        <header class="hero">
+            <div>
+                <div class="eyebrow" data-fr="Disponible · Athènes / France" data-en="Available · Athens / France">Disponible · Athènes / France</div>
+                <h1>Michail Tsimpidaros</h1>
+                <p class="role"
+                   data-fr="Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)"
+                   data-en="Graduate in Electrical Engineering & Industrial Computing (BUT GEII)">
+                   Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)
+                </p>
+                <p class="pitch"
                    data-fr="Ouvert à tous les secteurs d'activité, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement."
                    data-en="Open to all work sectors, with a particular interest in industry and construction, as well as large-scale projects that shape our environment.">
                    Ouvert à tous les secteurs d'activité, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement.
                 </p>
-                <h4 class="text-lg h4-style">
-                    <a href="mailto:michail.tsimpidaros@gmail.com" class="hover:text-blue-700 transition-colors duration-200 inline-flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M2.003 5.884L10 12l8-6.116V6H2v-.116zM2 6v12h18V6H2zm-2-.116V18c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5.884l-10 7.5z"/>
-                        </svg>
+
+                <div class="contact-strip">
+                    <a href="mailto:michail.tsimpidaros@gmail.com">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         michail.tsimpidaros@gmail.com
                     </a>
-                </h4>
-                <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mt-4 text-gray-700">
-                    <a href="tel:+306983615071" class="hover:text-blue-600 transition-colors duration-200 inline-flex items-center gap-1">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
-                        </svg>
-                        (+30) 6983615071 (GR)
+                    <a href="tel:+306983615071">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        (+30) 6983615071 <span style="opacity:.6">GR</span>
                     </a>
-                    <a href="tel:+330695312645" class="hover:text-blue-600 transition-colors duration-200 inline-flex items-center gap-1">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
-                        </svg>
-                        (+33) 0695312645 (FR)
+                    <a href="tel:+330695312645">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        (+33) 0695312645 <span style="opacity:.6">FR</span>
                     </a>
-                </div>
-                <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mt-4 text-gray-700">
-                    <span class="inline-flex items-center gap-1"
-                          data-fr="Permis de conduire B"
-                          data-en="Driving License B">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                        </svg>
-                        Permis de conduire B
+                    <span data-fr="Permis B" data-en="Driving License B">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                        Permis B
                     </span>
-                    <span class="inline-flex items-center gap-1"
-                          data-fr="Service militaire effectué (Grèce)"
-                          data-en="Mandatory military service completed (Greece)">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 2c-4.97 0-9 4.03-9 9 0 3.92 2.51 7.27 6 8.47V22h6v-2.53c3.49-1.2 6-4.55 6-8.47 0-4.97-4.03-9-9-9zm0 18c-3.87 0-7-3.13-7-7 0-3.87 3.13-7 7-7s7 3.13 7 7c0 3.87-3.13 7-7 7z"/>
-                        </svg>
+                    <span data-fr="Service militaire effectué (Grèce)" data-en="Military service completed (Greece)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         Service militaire effectué (Grèce)
                     </span>
                 </div>
-                <hr class="my-6 hr" />
-                <ul class="list-inline flex flex-wrap justify-center gap-2 text-2xl sm:text-3xl">
-                    <li><span class="skill-tag">C</span></li>
-                    <li><span class="skill-tag">Python</span></li>
-                    <li><span class="skill-tag">FPGA</span></li>
-                    <li><span class="skill-tag">IoT</span></li>
-                    <li><span class="skill-tag">KiCad</span></li>
-                </ul>
-            </div>
 
-            <!-- Summary Section -->
-            <div class="summary section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Résumé" data-en="Summary">Résumé</h2>
-                <p class="text-lg leading-relaxed mb-6"
-                   data-fr="Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques."
-                   data-en="Passionate about innovation and engineering, I am a young graduate in Electrical Engineering and Industrial Computing specialising in embedded systems development, IoT networks, and automation. Curious and adaptable, I seek to apply my technical skills and creativity to take on new technological challenges.">
-                    Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
-                </p>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div>
-                        <p class="skill-tag" data-fr="Business Analysis" data-en="Business Analysis">Business Analysis</p>
-                        <p class="skill-tag" data-fr="Développement Web" data-en="Web Development">Développement Web</p>
-                        <p class="skill-tag" data-fr="IoT Management" data-en="IoT Management">IoT Management</p>
-                    </div>
-                    <div>
-                        <p class="skill-tag" data-fr="Développement Logiciel" data-en="Software Development">Développement Logiciel</p>
-                        <p class="skill-tag" data-fr="Conception Électronique" data-en="Electronic Design">Conception Électronique</p>
-                        <p class="skill-tag" data-fr="Admin Linux" data-en="Linux Admin">Admin Linux</p>
-                    </div>
-                    <div>
-                        <p class="skill-tag" data-fr="Développement Agile" data-en="Agile Development">Développement Agile</p>
-                        <p class="skill-tag" data-fr="Travail d'équipe" data-en="Teamwork">Travail d'équipe</p>
-                        <p class="skill-tag" data-fr="Développement Fullstack" data-en="Fullstack Development">Développement Fullstack</p>
-                    </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">C / C++</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FPGA · VHDL</span>
+                    <span class="tech-tag">IoT · ESP32</span>
+                    <span class="tech-tag">KiCad</span>
                 </div>
             </div>
+        </header>
 
-            <!-- Work Experience Section -->
-            <div class="work-experience section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Expériences Professionnelles" data-en="Professional Experience">Expériences Professionnelles</h2>
+        <div class="grid">
 
-                <!-- BBI - INTRAKAT -->
-                <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-                        <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold h3-style"
-                                data-fr="Ingénieur Électricien de Chantier"
-                                data-en="Electrical Site Engineer">Ingénieur Électricien de Chantier</h3>
-                            <p class="font-medium text-lg text-blue-600"
-                               data-fr="BBI - INTRAKAT, Projet Riviera Tower, Elliniko, Athènes, GRÈCE"
-                               data-en="BBI - INTRAKAT, Riviera Tower Project, Elliniko, Athens, GREECE">
-                               BBI - INTRAKAT, Projet Riviera Tower, Elliniko, Athènes, GRÈCE
-                            </p>
-                        </div>
-                        <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium h3-style"
-                                data-fr="Octobre 2025 - Présent"
-                                data-en="October 2025 - Present">
-                                Octobre 2025 - Présent
-                            </h3>
-                        </div>
-                    </div>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li data-fr="Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko."
-                            data-en="Electrical site engineer on the Riviera Tower project in Elliniko.">
-                            Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko.
-                        </li>
-                        <li data-fr="Suivi et coordination des travaux électriques sur chantier."
-                            data-en="Monitoring and coordination of electrical works on site.">
-                            Suivi et coordination des travaux électriques sur chantier.
-                        </li>
-                        <li data-fr="Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes."
-                            data-en="Collaboration with construction teams to ensure compliance with plans and standards.">
-                            Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes.
-                        </li>
-                    </ul>
-                </div>
+            <main>
 
-                <!-- BASIS finance group -->
-                <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-                        <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold h3-style"
-                                data-fr="Data Entry"
-                                data-en="Data Entry">Data Entry</h3>
-                            <p class="font-medium text-lg text-blue-600"
-                               data-fr="BASIS finance group, Kos, GRÈCE"
-                               data-en="BASIS finance group, Kos, GREECE">
-                               BASIS finance group, Kos, GRÈCE
-                            </p>
-                        </div>
-                        <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium h3-style"
-                                data-fr="Juillet 2025 - Octobre 2025"
-                                data-en="July 2025 - October 2025">
-                                Juillet 2025 - Octobre 2025
-                            </h3>
-                        </div>
-                    </div>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li data-fr="Intégré à l'équipe financière pour la saisie et la gestion des données."
-                            data-en="Integrated into the finance team for data entry and management.">
-                            Intégré à l'équipe financière pour la saisie et la gestion des données.
-                        </li>
-                    </ul>
-                </div>
+                <section>
+                    <div class="section-title" data-fr="À propos" data-en="About">À propos</div>
+                    <p style="font-size: 1rem; color: var(--text-muted); max-width: 65ch;"
+                       data-fr="Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle, spécialisé en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques."
+                       data-en="Passionate about innovation and engineering, I am a young graduate in Electrical Engineering and Industrial Computing, specialising in embedded systems development, IoT networks, and automation. Curious and adaptable, I seek to apply my technical skills and creativity to take on new technological challenges.">
+                        Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle, spécialisé en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
+                    </p>
+                </section>
 
-                <!-- DISCOVERY PATH -->
-                <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-                        <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold h3-style"
-                                data-fr="Stage de 4 mois"
-                                data-en="4-month Internship">Stage de 4 mois</h3>
-                            <p class="font-medium text-lg text-blue-600"
-                               data-fr="DISCOVERY PATH, Athènes, GRÈCE"
-                               data-en="DISCOVERY PATH, Athens, GREECE">
-                               DISCOVERY PATH, Athènes, GRÈCE
-                            </p>
-                        </div>
-                        <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium h3-style"
-                                data-fr="Mai - Septembre 2024"
-                                data-en="May - September 2024">
-                                Mai - Septembre 2024
-                            </h3>
-                        </div>
-                    </div>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li data-fr="Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté."
-                            data-en="Design and construction of an ESP32 mesh network for a connected school building.">
-                            Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté.
-                        </li>
-                    </ul>
-                </div>
+                <section>
+                    <div class="section-title" data-fr="Expérience" data-en="Experience">Expérience</div>
 
-                <!-- Intelsys SA -->
-                <div class="mb-6 last:mb-0">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-                        <div class="md:w-3/4">
-                            <h3 class="text-2xl font-semibold h3-style"
-                                data-fr="Stage de 8 semaines"
-                                data-en="8-week Internship">Stage de 8 semaines</h3>
-                            <p class="font-medium text-lg text-blue-600"
-                               data-fr="Intelsys SA, Athènes, GRÈCE"
-                               data-en="Intelsys SA, Athens, GREECE">
-                               Intelsys SA, Athènes, GRÈCE
-                            </p>
-                        </div>
-                        <div class="md:w-1/4 text-left md:text-right">
-                            <h3 class="text-lg font-medium h3-style"
-                                data-fr="Juillet 2023"
-                                data-en="July 2023">
-                                Juillet 2023
-                            </h3>
-                        </div>
-                    </div>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li data-fr="Installation et mise en service de liaisons micro-ondes (Nokia, Huawei, Ericsson)."
-                            data-en="Installation and commissioning of microwave links (Nokia, Huawei, Ericsson).">
-                            Installation et mise en service de liaisons micro-ondes (Nokia, Huawei, Ericsson).
-                        </li>
-                        <li data-fr="Installation de stations de base 4G/5G."
-                            data-en="Installation of 4G/5G base stations.">
-                            Installation de stations de base 4G/5G.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Education Section -->
-            <div class="formation section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Formation" data-en="Education">Formation</h2>
-
-                <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <h3 class="text-2xl font-semibold h3-style"
-                        data-fr="Bachelor Universitaire de Technologie Génie Électrique et Informatique Industrielle (BUT GEII)"
-                        data-en="University Bachelor of Technology in Electrical Engineering and Industrial Computing (BUT GEII)">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industrielle (BUT GEII)</h3>
-                    <p class="font-medium text-lg text-blue-600"
-                       data-fr="IUT de Vélizy, UVSQ, Vélizy-Villacoublay (78)"
-                       data-en="IUT of Vélizy, UVSQ, Vélizy-Villacoublay (78)">IUT de Vélizy, UVSQ, Vélizy-Villacoublay (78)</p>
-                    <p class="mb-2 text-gray-700"
-                       data-fr="Septembre 2021 - 2024 — Diplômé"
-                       data-en="September 2021 - 2024 — Graduated">Septembre 2021 - 2024 — Diplômé</p>
-                </div>
-
-                <div>
-                    <h3 class="text-2xl font-semibold h3-style"
-                        data-fr="Diplôme de fin d'études grec (Apolytirion)"
-                        data-en="Greek High School Diploma (Apolytirion)">Diplôme de fin d'études grec (Apolytirion)</h3>
-                    <p class="font-medium text-lg text-blue-600"
-                       data-fr="Équivalent du baccalauréat scientifique"
-                       data-en="Equivalent to scientific baccalaureate">Équivalent du baccalauréat scientifique</p>
-                    <p class="font-medium text-lg text-blue-600"
-                       data-fr="Lycée Franco-Hellénique Eugène Delacroix (LFHED)"
-                       data-en="Franco-Hellenic Eugène Delacroix High School (LFHED)">Lycée Franco-Hellénique Eugène Delacroix (LFHED)</p>
-                    <p class="mb-2 text-gray-700"
-                       data-fr="Septembre 2021"
-                       data-en="September 2021">Septembre 2021</p>
-                </div>
-            </div>
-
-            <!-- Technical Skills Section -->
-            <div class="technical-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Compétences Techniques & Informatiques"
-                    data-en="Technical & IT Skills">Compétences Techniques & Informatiques</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style"
-                            data-fr="Électricité et électronique :"
-                            data-en="Electricity and electronics:">Électricité et électronique :</h4>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-tag" data-fr="Électronique analogique et numérique" data-en="Analog and digital electronics">Électronique analogique et numérique</span></li>
-                            <li><span class="skill-tag" data-fr="Conversion d'énergie" data-en="Energy conversion">Conversion d'énergie</span></li>
-                            <li><span class="skill-tag" data-fr="Transformateurs" data-en="Transformers">Transformateurs</span></li>
-                            <li><span class="skill-tag" data-fr="Machines à courant continu" data-en="DC machines">Machines à courant continu</span></li>
-                            <li><span class="skill-tag" data-fr="Simulation sous LTspice et PSim" data-en="Simulation with LTspice and PSim">Simulation sous LTspice et PSim</span></li>
-                            <li><span class="skill-tag" data-fr="Conception de cartes sous KiCad (CAO)" data-en="PCB design with KiCad (CAD)">Conception de cartes sous KiCad (CAO)</span></li>
+                    <div class="timeline-item">
+                        <div class="item-date" data-fr="OCT 2025 — PRÉSENT" data-en="OCT 2025 — PRESENT">OCT 2025 — PRÉSENT</div>
+                        <h3 class="item-title" data-fr="Ingénieur Électricien de Chantier" data-en="Electrical Site Engineer">Ingénieur Électricien de Chantier</h3>
+                        <div class="item-org" data-fr="BBI – INTRAKAT · Projet Riviera Tower, Elliniko, Athènes" data-en="BBI – INTRAKAT · Riviera Tower Project, Elliniko, Athens">BBI – INTRAKAT · Projet Riviera Tower, Elliniko, Athènes</div>
+                        <ul class="item-bullets">
+                            <li data-fr="Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko."
+                                data-en="Electrical site engineer on the Riviera Tower project in Elliniko.">
+                                Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko.
+                            </li>
+                            <li data-fr="Suivi et coordination des travaux électriques sur chantier."
+                                data-en="Monitoring and coordination of electrical works on site.">
+                                Suivi et coordination des travaux électriques sur chantier.
+                            </li>
+                            <li data-fr="Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes."
+                                data-en="Collaboration with construction teams to ensure compliance with plans and standards.">
+                                Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes.
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style"
-                            data-fr="Automatisme :"
-                            data-en="Automation:">Automatisme :</h4>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-tag" data-fr="Automates programmables Schneider" data-en="Schneider PLCs">Automates programmables Schneider</span></li>
-                            <li><span class="skill-tag" data-fr="Grafcet" data-en="Grafcet">Grafcet</span></li>
-                            <li><span class="skill-tag" data-fr="Ladder" data-en="Ladder">Ladder</span></li>
+
+                    <div class="timeline-item">
+                        <div class="item-date" data-fr="JUIL — OCT 2025" data-en="JUL — OCT 2025">JUIL — OCT 2025</div>
+                        <h3 class="item-title" data-fr="Data Entry" data-en="Data Entry">Data Entry</h3>
+                        <div class="item-org" data-fr="BASIS finance group · Kos, Grèce" data-en="BASIS finance group · Kos, Greece">BASIS finance group · Kos, Grèce</div>
+                        <ul class="item-bullets">
+                            <li data-fr="Intégré à l'équipe financière pour la saisie et la gestion des données."
+                                data-en="Integrated into the finance team for data entry and management.">
+                                Intégré à l'équipe financière pour la saisie et la gestion des données.
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style"
-                            data-fr="Informatique Industrielle :"
-                            data-en="Industrial IT:">Informatique Industrielle :</h4>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-tag" data-fr="Microcontrôleurs (C)" data-en="Microcontrollers (C)">Microcontrôleurs (C)</span></li>
-                            <li><span class="skill-tag" data-fr="FPGA (Xilinx) — VHDL" data-en="FPGA (Xilinx) — VHDL">FPGA (Xilinx) — VHDL</span></li>
-                            <li><span class="skill-tag" data-fr="BUS CAN" data-en="CAN BUS">BUS CAN</span></li>
-                            <li><span class="skill-tag" data-fr="Microcontrôleurs IoT (ESP32)" data-en="IoT microcontrollers (ESP32)">Microcontrôleurs IoT (ESP32)</span></li>
-                            <li><span class="skill-tag" data-fr="FreeRTOS" data-en="FreeRTOS">FreeRTOS</span></li>
-                            <li><span class="skill-tag" data-fr="SQL" data-en="SQL">SQL</span></li>
+
+                    <div class="timeline-item">
+                        <div class="item-date" data-fr="MAI — SEP 2024" data-en="MAY — SEP 2024">MAI — SEP 2024</div>
+                        <h3 class="item-title" data-fr="Stage de 4 mois" data-en="4-month Internship">Stage de 4 mois</h3>
+                        <div class="item-org" data-fr="DISCOVERY PATH · Athènes, Grèce" data-en="DISCOVERY PATH · Athens, Greece">DISCOVERY PATH · Athènes, Grèce</div>
+                        <ul class="item-bullets">
+                            <li data-fr="Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté."
+                                data-en="Design and construction of an ESP32 mesh network for a connected school building.">
+                                Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté.
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style"
-                            data-fr="Informatique :"
-                            data-en="IT:">Informatique :</h4>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-tag" data-fr="C / C++" data-en="C / C++">C / C++</span></li>
-                            <li><span class="skill-tag" data-fr="Python" data-en="Python">Python</span></li>
-                            <li><span class="skill-tag" data-fr="Scilab" data-en="Scilab">Scilab</span></li>
-                            <li><span class="skill-tag" data-fr="LabVIEW" data-en="LabVIEW">LabVIEW</span></li>
-                            <li><span class="skill-tag" data-fr="Microsoft Office" data-en="Microsoft Office">Microsoft Office</span></li>
+
+                    <div class="timeline-item">
+                        <div class="item-date" data-fr="JUIL 2023" data-en="JUL 2023">JUIL 2023</div>
+                        <h3 class="item-title" data-fr="Stage de 8 semaines" data-en="8-week Internship">Stage de 8 semaines</h3>
+                        <div class="item-org" data-fr="Intelsys SA · Athènes, Grèce" data-en="Intelsys SA · Athens, Greece">Intelsys SA · Athènes, Grèce</div>
+                        <ul class="item-bullets">
+                            <li data-fr="Installation et mise en service de liaisons micro-ondes (Nokia, Huawei, Ericsson)."
+                                data-en="Installation and commissioning of microwave links (Nokia, Huawei, Ericsson).">
+                                Installation et mise en service de liaisons micro-ondes (Nokia, Huawei, Ericsson).
+                            </li>
+                            <li data-fr="Installation de stations de base 4G/5G."
+                                data-en="Installation of 4G/5G base stations.">
+                                Installation de stations de base 4G/5G.
+                            </li>
                         </ul>
                     </div>
-                </div>
-            </div>
+                </section>
 
-            <!-- Projects Section -->
-            <div class="projects section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Projets" data-en="Projects">Projets</h2>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li data-fr="Étude et réalisation d'un thermomètre numérique en technologie traversante."
-                        data-en="Study and realisation of a digital thermometer using through-hole technology.">Étude et réalisation d'un thermomètre numérique en technologie traversante.</li>
-                    <li data-fr="Commande par FPGA de la vitesse de rotation d'un moteur via une télécommande infrarouge."
-                        data-en="FPGA control of motor rotation speed from an infrared remote control.">Commande par FPGA de la vitesse de rotation d'un moteur via une télécommande infrarouge.</li>
-                    <li data-fr="Banc de test contrôlé par une carte numérique (décodage de trame, FPGA…)."
-                        data-en="Test bench controlled by a digital board (frame decoding, FPGA…).">Banc de test contrôlé par une carte numérique (décodage de trame, FPGA…).</li>
-                    <li data-fr="Mesure de distance par capteur à ultrasons."
-                        data-en="Distance measurement using an ultrasonic sensor.">Mesure de distance par capteur à ultrasons.</li>
-                    <li data-fr="Affichage de mesures avec une carte Raspberry Pi."
-                        data-en="Display of measurements with a Raspberry Pi board.">Affichage de mesures avec une carte Raspberry Pi.</li>
-                    <li data-fr="Acquisition de mesures avec une carte Sleepy Bee."
-                        data-en="Measurement acquisition with a Sleepy Bee board.">Acquisition de mesures avec une carte Sleepy Bee.</li>
-                    <li data-fr="Voiture autonome équipée d'un lidar."
-                        data-en="Autonomous car equipped with a lidar.">Voiture autonome équipée d'un lidar.</li>
-                    <li data-fr="Réalisation d'un bras robotique automatique."
-                        data-en="Realisation of an automatic robotic arm.">Réalisation d'un bras robotique automatique.</li>
-                    <li data-fr="Système décentralisé de capteurs basé sur ESP32 et Raspberry Pi."
-                        data-en="Decentralised sensor system based on ESP32 and Raspberry Pi.">Système décentralisé de capteurs basé sur ESP32 et Raspberry Pi.</li>
-                </ul>
-            </div>
+                <section>
+                    <div class="section-title" data-fr="Formation" data-en="Education">Formation</div>
 
-            <!-- Languages Section -->
-            <div class="languages section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Langues" data-en="Languages">Langues</h2>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-tag" data-fr="Anglais — niveau C1 (TOEIC) 🇬🇧" data-en="English — C1 level (TOEIC) 🇬🇧">Anglais — niveau C1 (TOEIC) 🇬🇧</span></li>
-                    <li><span class="skill-tag" data-fr="Français — courant 🇫🇷" data-en="French — fluent 🇫🇷">Français — courant 🇫🇷</span></li>
-                    <li><span class="skill-tag" data-fr="Grec — langue maternelle 🇬🇷" data-en="Greek — native 🇬🇷">Grec — langue maternelle 🇬🇷</span></li>
-                </ul>
-            </div>
+                    <div class="edu-item">
+                        <div class="edu-header">
+                            <div class="edu-title"
+                                 data-fr="Bachelor Universitaire de Technologie GEII"
+                                 data-en="University Bachelor of Technology — GEII">
+                                Bachelor Universitaire de Technologie GEII
+                            </div>
+                            <div class="edu-date">2021 — 2024</div>
+                        </div>
+                        <div class="edu-org"
+                             data-fr="IUT de Vélizy, UVSQ — Vélizy-Villacoublay (78)"
+                             data-en="IUT of Vélizy, UVSQ — Vélizy-Villacoublay (78)">
+                             IUT de Vélizy, UVSQ — Vélizy-Villacoublay (78)
+                        </div>
+                        <div class="edu-note"
+                             data-fr="Génie Électrique et Informatique Industrielle · Diplômé"
+                             data-en="Electrical Engineering & Industrial Computing · Graduated">
+                             Génie Électrique et Informatique Industrielle · Diplômé
+                        </div>
+                    </div>
 
-            <!-- Interests Section -->
-            <div class="interests section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Centres d'intérêt & Hobbies"
-                    data-en="Interests & Hobbies">Centres d'intérêt & Hobbies</h2>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li data-fr="Scout marin (11 années)"
-                        data-en="Sea scout (11 years)">Scout marin (11 années)</li>
-                    <li data-fr="Water-polo (6 années)"
-                        data-en="Water polo (6 years)">Water-polo (6 années)</li>
-                    <li data-fr="Kick-boxing (3 années)"
-                        data-en="Kickboxing (3 years)">Kick-boxing (3 années)</li>
-                    <li data-fr="Voile (sailing)"
-                        data-en="Sailing">Voile (sailing)</li>
-                    <li data-fr="Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes."
-                        data-en="Sound and lighting technical manager for school performances at the Franco-Hellenic School of Athens.">Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes.</li>
-                </ul>
-            </div>
+                    <div class="edu-item">
+                        <div class="edu-header">
+                            <div class="edu-title"
+                                 data-fr="Apolytirion (équivalent baccalauréat scientifique)"
+                                 data-en="Apolytirion (Greek scientific baccalaureate)">
+                                Apolytirion (équivalent baccalauréat scientifique)
+                            </div>
+                            <div class="edu-date">2021</div>
+                        </div>
+                        <div class="edu-org"
+                             data-fr="Lycée Franco-Hellénique Eugène Delacroix (LFHED) — Athènes"
+                             data-en="Franco-Hellenic Eugène Delacroix High School (LFHED) — Athens">
+                             Lycée Franco-Hellénique Eugène Delacroix (LFHED) — Athènes
+                        </div>
+                    </div>
+                </section>
 
-            <!-- Soft Skills Section -->
-            <div class="soft-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
-                    data-fr="Soft Skills" data-en="Soft Skills">Soft Skills</h2>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-tag" data-fr="Travail en équipe" data-en="Teamwork">Travail en équipe</span></li>
-                    <li><span class="skill-tag" data-fr="Adaptation" data-en="Adaptability">Adaptation</span></li>
-                    <li><span class="skill-tag" data-fr="Visualisation" data-en="Visualisation">Visualisation</span></li>
-                    <li><span class="skill-tag" data-fr="Curiosité" data-en="Curiosity">Curiosité</span></li>
-                </ul>
-            </div>
+                <section>
+                    <div class="section-title" data-fr="Projets sélectionnés" data-en="Selected projects">Projets sélectionnés</div>
+                    <ul class="project-list">
+                        <li class="project-item" data-fr="Thermomètre numérique en technologie traversante." data-en="Digital thermometer using through-hole technology.">Thermomètre numérique en technologie traversante.</li>
+                        <li class="project-item" data-fr="Commande FPGA d'un moteur via télécommande infrarouge." data-en="FPGA control of a motor via infrared remote.">Commande FPGA d'un moteur via télécommande infrarouge.</li>
+                        <li class="project-item" data-fr="Banc de test contrôlé par carte numérique (décodage de trame, FPGA)." data-en="Test bench controlled by a digital board (frame decoding, FPGA).">Banc de test contrôlé par carte numérique (décodage de trame, FPGA).</li>
+                        <li class="project-item" data-fr="Mesure de distance par capteur à ultrasons." data-en="Distance measurement using an ultrasonic sensor.">Mesure de distance par capteur à ultrasons.</li>
+                        <li class="project-item" data-fr="Affichage de mesures sur Raspberry Pi." data-en="Measurement display on Raspberry Pi.">Affichage de mesures sur Raspberry Pi.</li>
+                        <li class="project-item" data-fr="Acquisition de mesures avec carte Sleepy Bee." data-en="Measurement acquisition with a Sleepy Bee board.">Acquisition de mesures avec carte Sleepy Bee.</li>
+                        <li class="project-item" data-fr="Voiture autonome équipée d'un lidar." data-en="Autonomous car equipped with a lidar.">Voiture autonome équipée d'un lidar.</li>
+                        <li class="project-item" data-fr="Bras robotique automatique." data-en="Automatic robotic arm.">Bras robotique automatique.</li>
+                        <li class="project-item" data-fr="Système décentralisé de capteurs (ESP32 + Raspberry Pi)." data-en="Decentralised sensor system (ESP32 + Raspberry Pi).">Système décentralisé de capteurs (ESP32 + Raspberry Pi).</li>
+                    </ul>
+                </section>
 
-            <!-- Footer Section -->
-            <footer class="mt-8 bg-gray-800 text-white p-6 sm:p-8 rounded-xl shadow-lg text-center">
-                <p class="text-sm" id="footerRights"
-                   data-fr="© 2025 Michail Tsimpidaros. Tous droits réservés."
-                   data-en="© 2025 Michail Tsimpidaros. All rights reserved.">© 2025 Michail Tsimpidaros. Tous droits réservés.</p>
-                <p class="text-sm mt-2"
-                   data-fr="Réalisé avec passion et code."
-                   data-en="Made with passion and code.">Réalisé avec passion et code.</p>
-            </footer>
+                <section>
+                    <div class="section-title" data-fr="Langues" data-en="Languages">Langues</div>
+                    <div class="lang-list">
+                        <div class="lang-item">
+                            <span class="lang-name" data-fr="Grec 🇬🇷" data-en="Greek 🇬🇷">Grec 🇬🇷</span>
+                            <span class="lang-level" data-fr="natif" data-en="native">natif</span>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-name" data-fr="Français 🇫🇷" data-en="French 🇫🇷">Français 🇫🇷</span>
+                            <span class="lang-level" data-fr="courant" data-en="fluent">courant</span>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-name" data-fr="Anglais 🇬🇧" data-en="English 🇬🇧">Anglais 🇬🇧</span>
+                            <span class="lang-level">C1 · TOEIC</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title" data-fr="Centres d'intérêt" data-en="Interests">Centres d'intérêt</div>
+                    <ul class="simple-list">
+                        <li data-fr="Scout marin (11 années)" data-en="Sea scout (11 years)">Scout marin (11 années)</li>
+                        <li data-fr="Water-polo (6 années)" data-en="Water polo (6 years)">Water-polo (6 années)</li>
+                        <li data-fr="Kick-boxing (3 années)" data-en="Kickboxing (3 years)">Kick-boxing (3 années)</li>
+                        <li data-fr="Voile (sailing)" data-en="Sailing">Voile (sailing)</li>
+                        <li data-fr="Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes."
+                            data-en="Sound and lighting technical manager for school performances at the Franco-Hellenic School of Athens.">Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes.</li>
+                    </ul>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+
+                <section>
+                    <div class="section-title" data-fr="Compétences techniques" data-en="Technical skills">Compétences techniques</div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-fr="Électricité & électronique" data-en="Electricity & electronics">Électricité & électronique</div>
+                        <div class="skill-list">
+                            <span class="chip" data-fr="Analogique & numérique" data-en="Analog & digital">Analogique & numérique</span>
+                            <span class="chip" data-fr="Conversion d'énergie" data-en="Energy conversion">Conversion d'énergie</span>
+                            <span class="chip" data-fr="Transformateurs" data-en="Transformers">Transformateurs</span>
+                            <span class="chip" data-fr="Machines DC" data-en="DC machines">Machines DC</span>
+                            <span class="chip">LTspice</span>
+                            <span class="chip">PSim</span>
+                            <span class="chip" data-fr="KiCad (CAO)" data-en="KiCad (CAD)">KiCad (CAO)</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-fr="Automatisme" data-en="Automation">Automatisme</div>
+                        <div class="skill-list">
+                            <span class="chip" data-fr="Automates Schneider" data-en="Schneider PLCs">Automates Schneider</span>
+                            <span class="chip">Grafcet</span>
+                            <span class="chip">Ladder</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-fr="Informatique industrielle" data-en="Industrial computing">Informatique industrielle</div>
+                        <div class="skill-list">
+                            <span class="chip" data-fr="Microcontrôleurs (C)" data-en="Microcontrollers (C)">Microcontrôleurs (C)</span>
+                            <span class="chip">FPGA · VHDL</span>
+                            <span class="chip">Xilinx</span>
+                            <span class="chip">CAN BUS</span>
+                            <span class="chip">ESP32</span>
+                            <span class="chip">FreeRTOS</span>
+                            <span class="chip">SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-label" data-fr="Programmation & outils" data-en="Programming & tools">Programmation & outils</div>
+                        <div class="skill-list">
+                            <span class="chip">C / C++</span>
+                            <span class="chip">Python</span>
+                            <span class="chip">Scilab</span>
+                            <span class="chip">LabVIEW</span>
+                            <span class="chip">MS Office</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title" data-fr="Soft skills" data-en="Soft skills">Soft skills</div>
+                    <div class="softskill-chips">
+                        <span class="chip" data-fr="Travail en équipe" data-en="Teamwork">Travail en équipe</span>
+                        <span class="chip" data-fr="Adaptation" data-en="Adaptability">Adaptation</span>
+                        <span class="chip" data-fr="Visualisation" data-en="Visualisation">Visualisation</span>
+                        <span class="chip" data-fr="Curiosité" data-en="Curiosity">Curiosité</span>
+                        <span class="chip" data-fr="Business Analysis" data-en="Business Analysis">Business Analysis</span>
+                        <span class="chip" data-fr="Méthodes Agile" data-en="Agile methods">Méthodes Agile</span>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title" data-fr="Domaines" data-en="Domains">Domaines</div>
+                    <div class="softskill-chips">
+                        <span class="chip" data-fr="Systèmes embarqués" data-en="Embedded systems">Systèmes embarqués</span>
+                        <span class="chip">IoT</span>
+                        <span class="chip" data-fr="Automatisation" data-en="Automation">Automatisation</span>
+                        <span class="chip" data-fr="Conception électronique" data-en="Electronic design">Conception électronique</span>
+                        <span class="chip" data-fr="Développement logiciel" data-en="Software development">Développement logiciel</span>
+                        <span class="chip" data-fr="Développement web" data-en="Web development">Développement web</span>
+                        <span class="chip" data-fr="Admin Linux" data-en="Linux admin">Admin Linux</span>
+                    </div>
+                </section>
+            </aside>
         </div>
+
+        <footer>
+            <p data-fr="© 2025 Michail Tsimpidaros — Tous droits réservés."
+               data-en="© 2025 Michail Tsimpidaros — All rights reserved.">© 2025 Michail Tsimpidaros — Tous droits réservés.</p>
+            <p data-fr="Réalisé avec passion et code."
+               data-en="Crafted with passion and code.">Réalisé avec passion et code.</p>
+        </footer>
     </div>
 
     <script>
@@ -627,51 +807,42 @@
             const htmlElement = document.documentElement;
             const cvTitleElement = document.getElementById('cvTitle');
 
-            // --- Theme Toggle ---
             function setTheme(theme) {
                 if (theme === 'dark') {
                     htmlElement.classList.add('dark-mode');
-                    themeIcon.textContent = '🌙';
+                    themeIcon.textContent = '☾';
                     themeToggle.setAttribute('aria-label', 'Switch to light mode');
                 } else {
                     htmlElement.classList.remove('dark-mode');
-                    themeIcon.textContent = '☀️';
+                    themeIcon.textContent = '☀';
                     themeToggle.setAttribute('aria-label', 'Switch to dark mode');
                 }
-                try { localStorage.setItem('theme', theme); } catch (e) { /* private mode */ }
+                try { localStorage.setItem('theme', theme); } catch (e) {}
             }
 
             let savedTheme;
-            try {
-                savedTheme = localStorage.getItem('theme');
-            } catch (e) {
-                savedTheme = null;
-            }
+            try { savedTheme = localStorage.getItem('theme'); } catch (e) { savedTheme = null; }
             if (!savedTheme) {
                 savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             }
             setTheme(savedTheme);
 
             themeToggle.addEventListener('click', () => {
-                const newTheme = htmlElement.classList.contains('dark-mode') ? 'light' : 'dark';
-                setTheme(newTheme);
+                setTheme(htmlElement.classList.contains('dark-mode') ? 'light' : 'dark');
             });
 
-            // --- Language Toggle ---
             let isFrench = true;
             try {
-                const savedLanguage = localStorage.getItem('language');
-                if (savedLanguage === 'en') isFrench = false;
-            } catch (e) { /* private mode */ }
+                if (localStorage.getItem('language') === 'en') isFrench = false;
+            } catch (e) {}
 
             function updateText() {
                 const lang = isFrench ? 'fr' : 'en';
-                // Update the html lang attribute for accessibility & SEO
                 htmlElement.setAttribute('lang', lang);
-                languageText.textContent = isFrench ? 'EN' : 'FR'; // Button shows the language you'd switch TO
+                languageText.textContent = isFrench ? 'EN' : 'FR';
                 cvTitleElement.textContent = isFrench
-                    ? 'Michail Tsimpidaros - Ingénieur Électrique & Systèmes Embarqués - CV'
-                    : 'Michail Tsimpidaros - Electrical & Embedded Systems Engineer - CV';
+                    ? 'Michail Tsimpidaros — Ingénieur Électrique & Systèmes Embarqués'
+                    : 'Michail Tsimpidaros — Electrical & Embedded Systems Engineer';
                 languageToggle.setAttribute('aria-label', isFrench ? 'Switch to English' : 'Passer en français');
 
                 document.querySelectorAll('[data-fr], [data-en]').forEach(el => {
@@ -680,11 +851,10 @@
                 });
             }
 
-            // Single, merged listener — toggles state, updates text, AND saves preference
             languageToggle.addEventListener('click', () => {
                 isFrench = !isFrench;
                 updateText();
-                try { localStorage.setItem('language', isFrench ? 'fr' : 'en'); } catch (e) { /* private mode */ }
+                try { localStorage.setItem('language', isFrench ? 'fr' : 'en'); } catch (e) {}
             });
 
             updateText();

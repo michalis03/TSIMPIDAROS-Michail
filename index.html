@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="cvTitle">Michail Tsimpidaros - CV</title>
+    <meta name="description" content="CV de Michail Tsimpidaros — Ingénieur en Génie Électrique et Informatique Industrielle. Systèmes embarqués, IoT, FPGA, automatisation.">
+    <meta name="author" content="Michail Tsimpidaros">
+    <title id="cvTitle">Michail Tsimpidaros - Electrical & Embedded Systems Engineer - CV</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <style>
         /* CSS Variables for theming */
-        :root { /* Light theme defaults */
-            --bg-color-main: #f3f4f6; /* Light gray background */
+        :root {
+            --bg-color-main: #f3f4f6;
             --text-color-main: #333;
             --card-bg-color: #ffffff;
-            --heading-color: #1f2937; /* gray-900 */
-            --subheading-color: #2563eb; /* blue-700 */
-            --contact-text-color: #4b5563; /* gray-600 */
-            --link-color: #3b82f6; /* blue-500 */
-            --link-hover-color: #1d4ed8; /* blue-700 */
-            --border-color-light: #d1d5db; /* gray-300 */
-            --section-border-color: #3b82f6; /* blue-500 */
-            --skill-hover-bg: #e0f2fe; /* light blue */
+            --heading-color: #1f2937;
+            --subheading-color: #2563eb;
+            --contact-text-color: #4b5563;
+            --link-color: #3b82f6;
+            --link-hover-color: #1d4ed8;
+            --border-color-light: #d1d5db;
+            --section-border-color: #3b82f6;
+            --skill-hover-bg: #e0f2fe;
             --button-bg-light: #e2e8f0;
             --button-text-light: #2d3748;
             --button-bg-light-hover: #cbd5e0;
         }
 
-        html.dark-mode { /* Dark theme variables */
-            --bg-color-main: #1a202c; /* darker gray */
-            --text-color-main: #e2e8f0; /* light gray */
-            --card-bg-color: #2d3748; /* dark slate */
-            --heading-color: #edf2f7; /* white */
-            --subheading-color: #90cdf4; /* light blue */
-            --contact-text-color: #a0aec0; /* light gray */
-            --link-color: #63b3ed; /* lighter blue */
-            --link-hover-color: #90cdf4; /* even lighter blue */
-            --border-color-light: #4a5568; /* dark gray */
-            --section-border-color: #63b3ed; /* light blue */
-            --skill-hover-bg: #4a5568; /* dark gray for hover */
+        html.dark-mode {
+            --bg-color-main: #1a202c;
+            --text-color-main: #e2e8f0;
+            --card-bg-color: #2d3748;
+            --heading-color: #edf2f7;
+            --subheading-color: #90cdf4;
+            --contact-text-color: #a0aec0;
+            --link-color: #63b3ed;
+            --link-hover-color: #90cdf4;
+            --border-color-light: #4a5568;
+            --section-border-color: #63b3ed;
+            --skill-hover-bg: #4a5568;
             --button-bg-dark: #4a5568;
             --button-text-dark: #edf2f7;
             --button-bg-dark-hover: #636b77;
@@ -51,10 +55,9 @@
             color: var(--text-color-main);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* Custom scrollbar for a cleaner look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track {
             background: var(--border-color-light);
             border-radius: 10px;
@@ -63,29 +66,24 @@
             background: var(--contact-text-color);
             border-radius: 10px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #808080;
-        }
-        html.dark-mode ::-webkit-scrollbar-thumb:hover {
-            background: #777;
-        }
+        ::-webkit-scrollbar-thumb:hover { background: #808080; }
+        html.dark-mode ::-webkit-scrollbar-thumb:hover { background: #777; }
 
-        /* General section card styling */
+        /* Section card */
         .section-card {
             background-color: var(--card-bg-color);
             padding: 1.5rem 2rem;
             border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
             margin-bottom: 2rem;
-            transition: all 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
         }
         .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
         }
 
-        /* Skill item hover effect */
-        .skill-item {
+        /* Tag-style skill items (for actual skill chips, not body bullets) */
+        .skill-tag {
             display: inline-block;
             transition: all 0.2s ease-in-out;
             border-radius: 0.375rem;
@@ -94,13 +92,13 @@
             cursor: default;
             color: var(--text-color-main);
         }
-        .skill-item:hover {
+        .skill-tag:hover {
             background-color: var(--skill-hover-bg);
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
-        /* Applying theme variables to elements */
+        /* Theme variable mappings */
         h1, .h1-style { color: var(--heading-color); }
         h3, .h3-style { color: var(--subheading-color); }
         h4, .h4-style { color: var(--contact-text-color); }
@@ -118,39 +116,41 @@
         .border-gray-300 { border-color: var(--border-color-light) !important; }
         .hr { border-color: var(--border-color-light) !important; }
 
-        /* Styles for the new Download Button */
+        /* Download button — mobile-friendly: always shows label */
         .download-button {
             background-color: var(--subheading-color);
             color: white;
-            transition: background-color 0.3s ease, transform 0.2s ease, width 0.3s ease, padding 0.3s ease;
-            white-space: nowrap; /* Prevent text wrapping */
-            overflow: hidden; /* Hide overflow content */
-            width: 40px; /* Initial width for just the icon */
-            padding: 8px; /* Consistent padding for icon */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+            padding: 0.5rem 0.875rem;
+            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
-        .download-button:hover {
+        .download-button:hover,
+        .download-button:focus-visible {
             background-color: var(--link-hover-color);
-            transform: scale(1.05);
-            width: 150px; /* Expand width on hover to show text */
-            padding: 8px 16px; /* Adjust padding for text */
+            transform: scale(1.04);
         }
-        .download-button span {
-            display: none; /* Hide text initially */
-            margin-left: 8px; /* Space between icon and text */
-            transition: display 0.3s ease, margin-left 0.3s ease;
-        }
-        .download-button:hover span {
-            display: inline; /* Show text on hover */
+        .download-button:focus-visible {
+            outline: 2px solid var(--link-hover-color);
+            outline-offset: 2px;
         }
 
-        /* Specific styles for the theme and language toggles */
+        /* Theme & language toggles */
         #themeToggle, #languageToggle {
             background-color: var(--button-bg-light);
             color: var(--button-text-light);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        #themeToggle:hover, #languageToggle:hover {
+        #themeToggle:hover, #languageToggle:hover,
+        #themeToggle:focus-visible, #languageToggle:focus-visible {
             background-color: var(--button-bg-light-hover);
+        }
+        #themeToggle:focus-visible, #languageToggle:focus-visible {
+            outline: 2px solid var(--subheading-color);
+            outline-offset: 2px;
         }
         html.dark-mode #themeToggle, html.dark-mode #languageToggle {
             background-color: var(--button-bg-dark);
@@ -159,306 +159,380 @@
         html.dark-mode #themeToggle:hover, html.dark-mode #languageToggle:hover {
             background-color: var(--button-bg-dark-hover);
         }
+
+        /* Header layout: stack toggles & download nicely on mobile */
+        .header-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Print styles — clean printout for those who print to PDF from browser */
+        @media print {
+            body { background: white !important; color: black !important; }
+            .section-card {
+                box-shadow: none !important;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+                margin-bottom: 1rem;
+            }
+            #themeToggle, #languageToggle, .download-button { display: none !important; }
+            a { color: black !important; text-decoration: none !important; }
+            .section-card:hover { transform: none !important; }
+        }
+
+        /* Reduced motion — respect users who prefer no animation */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         <div class="max-w-4xl mx-auto">
             <!-- Title Section -->
-            <div class="text-center mb-10 p-8 rounded-xl shadow-xl relative section-card">
-                <!-- Download CV Button - positioned top-left -->
-                <a href="https://www.canva.com/design/DAE0frvMnzw/O18WpLDmr097sUzPzlflHg/view?utm_content=DAE0frvMnzw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc809747e16" class="absolute top-4 left-4 rounded-md shadow-md text-sm font-semibold flex items-center justify-center download-button" download>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                    </svg>
-                    <span data-fr="Télécharger CV" data-en="Download CV">Télécharger CV</span>
-                </a>
+            <div class="text-center mb-10 p-6 sm:p-8 rounded-xl shadow-xl section-card">
+                <!-- Header controls: download on the left, theme/lang on the right (responsive) -->
+                <div class="header-controls">
+                    <a href="https://www.canva.com/design/DAE0frvMnzw/O18WpLDmr097sUzPzlflHg/view?utm_content=DAE0frvMnzw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc809747e16"
+                       class="rounded-md shadow-md font-semibold download-button"
+                       download
+                       aria-label="Download CV as PDF">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
+                        <span data-fr="Télécharger CV" data-en="Download CV">Télécharger CV</span>
+                    </a>
 
-                <!-- Theme and Language Toggles - positioned top-right -->
-                <div class="absolute top-4 right-4 flex gap-2">
-                    <button id="themeToggle" class="p-2 rounded-full shadow-md flex items-center justify-center">
-                        <span id="themeIcon" class="text-xl">☀️</span>
-                    </button>
-                    <button id="languageToggle" class="p-2 rounded-full shadow-md text-sm font-semibold flex items-center justify-center">
-                        <span id="languageText">EN</span>
-                    </button>
+                    <div class="flex gap-2">
+                        <button id="themeToggle"
+                                class="p-2 rounded-full shadow-md flex items-center justify-center"
+                                aria-label="Toggle dark mode">
+                            <span id="themeIcon" class="text-xl" aria-hidden="true">☀️</span>
+                        </button>
+                        <button id="languageToggle"
+                                class="p-2 rounded-full shadow-md text-sm font-semibold flex items-center justify-center min-w-[44px]"
+                                aria-label="Switch language">
+                            <span id="languageText">EN</span>
+                        </button>
+                    </div>
                 </div>
 
-                <h1 class="text-5xl sm:text-6xl font-extrabold mb-2 leading-tight h1-style" data-fr="Michail Tsimpidaros" data-en="Michail Tsimpidaros">Michail Tsimpidaros</h1>
-                <h3 class="text-xl sm:text-2xl font-medium mb-2 h3-style" data-fr="Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)" data-en="Graduate in Electrical Engineering and Industrial Computing (BUT GEII)">Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)</h3>
-                <p class="text-lg leading-relaxed text-gray-700 mb-4"
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-2 leading-tight h1-style">Michail Tsimpidaros</h1>
+                <h3 class="text-xl sm:text-2xl font-medium mb-2 h3-style"
+                    data-fr="Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)"
+                    data-en="Graduate in Electrical Engineering and Industrial Computing (BUT GEII)">
+                    Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)
+                </h3>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4 max-w-2xl mx-auto"
                    data-fr="Ouvert à tous les secteurs d'activité, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement."
                    data-en="Open to all work sectors, with a particular interest in industry and construction, as well as large-scale projects that shape our environment.">
                    Ouvert à tous les secteurs d'activité, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement.
                 </p>
                 <h4 class="text-lg h4-style">
-                    <a href="mailto:michail.tsimpidaros@gmail.com" class="hover:text-blue-700 transition-colors duration-200 flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="mailto:michail.tsimpidaros@gmail.com" class="hover:text-blue-700 transition-colors duration-200 inline-flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M2.003 5.884L10 12l8-6.116V6H2v-.116zM2 6v12h18V6H2zm-2-.116V18c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5.884l-10 7.5z"/>
                         </svg>
                         michail.tsimpidaros@gmail.com
                     </a>
                 </h4>
-                <div class="flex justify-center items-center gap-4 mt-4 text-gray-700">
-                    <a href="tel:+306983615071" class="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mt-4 text-gray-700">
+                    <a href="tel:+306983615071" class="hover:text-blue-600 transition-colors duration-200 inline-flex items-center gap-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
                         </svg>
                         (+30) 6983615071 (GR)
                     </a>
-                    <a href="tel:+330695312645" class="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="tel:+330695312645" class="hover:text-blue-600 transition-colors duration-200 inline-flex items-center gap-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.58 3.58.58.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.21 2.46.58 3.58.12.35.03.75-.25 1.02L6.62 10.79z"/>
                         </svg>
                         (+33) 0695312645 (FR)
                     </a>
                 </div>
-                <div class="flex justify-center items-center gap-4 mt-4 text-gray-700">
-                    <span class="flex items-center gap-1" data-fr="Permis de conduire B" data-en="Driving License B">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mt-4 text-gray-700">
+                    <span class="inline-flex items-center gap-1"
+                          data-fr="Permis de conduire B"
+                          data-en="Driving License B">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
                         </svg>
                         Permis de conduire B
                     </span>
-                    <span class="flex items-center gap-1" data-fr="Service militaire effectué (Grèce)" data-en="Mandatory military service completed (Greece)">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <span class="inline-flex items-center gap-1"
+                          data-fr="Service militaire effectué (Grèce)"
+                          data-en="Mandatory military service completed (Greece)">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M12 2c-4.97 0-9 4.03-9 9 0 3.92 2.51 7.27 6 8.47V22h6v-2.53c3.49-1.2 6-4.55 6-8.47 0-4.97-4.03-9-9-9zm0 18c-3.87 0-7-3.13-7-7 0-3.87 3.13-7 7-7s7 3.13 7 7c0 3.87-3.13 7-7 7z"/>
                         </svg>
                         Service militaire effectué (Grèce)
                     </span>
                 </div>
                 <hr class="my-6 hr" />
-                <ul class="list-inline flex flex-wrap justify-center gap-2 text-3xl">
-                    <li><span class="skill-item">C</span></li>
-                    <li><span class="skill-item">Python</span></li>
-                    <li><span class="skill-item">FPGA</span></li>
-                    <li><span class="skill-item">IoT</span></li>
-                    <li><span class="skill-item">Kicad</span></li>
+                <ul class="list-inline flex flex-wrap justify-center gap-2 text-2xl sm:text-3xl">
+                    <li><span class="skill-tag">C</span></li>
+                    <li><span class="skill-tag">Python</span></li>
+                    <li><span class="skill-tag">FPGA</span></li>
+                    <li><span class="skill-tag">IoT</span></li>
+                    <li><span class="skill-tag">KiCad</span></li>
                 </ul>
             </div>
 
             <!-- Summary Section -->
             <div class="summary section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Résumé" data-en="Summary">Résumé</h2>
-                <p class="text-lg leading-relaxed mb-6" data-fr="Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques." data-en="Passionate about innovation and engineering, I am a young graduate in Electrical Engineering and Industrial Computing in embedded systems development, IoT networks, and automation. Curious and adaptable, I seek to apply my technical skills and creativity to take on new technological challenges.">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Résumé" data-en="Summary">Résumé</h2>
+                <p class="text-lg leading-relaxed mb-6"
+                   data-fr="Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques."
+                   data-en="Passionate about innovation and engineering, I am a young graduate in Electrical Engineering and Industrial Computing specialising in embedded systems development, IoT networks, and automation. Curious and adaptable, I seek to apply my technical skills and creativity to take on new technological challenges.">
                     Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div>
-                        <p class="skill-item" data-fr="Business Analysis" data-en="Business Analysis">Business Analysis</p>
-                        <p class="skill-item" data-fr="Développement Web" data-en="Web Development">Développement Web</p>
-                        <p class="skill-item" data-fr="IoT Management" data-en="IoT Management">IoT Management</p>
+                        <p class="skill-tag" data-fr="Business Analysis" data-en="Business Analysis">Business Analysis</p>
+                        <p class="skill-tag" data-fr="Développement Web" data-en="Web Development">Développement Web</p>
+                        <p class="skill-tag" data-fr="IoT Management" data-en="IoT Management">IoT Management</p>
                     </div>
                     <div>
-                        <p class="skill-item" data-fr="Développement Logiciel" data-en="Software Development">Développement Logiciel</p>
-                        <p class="skill-item" data-fr="Conception Électronique" data-en="Electronic Design">Conception Électronique</p>
-                        <p class="skill-item" data-fr="Admin Linux" data-en="Linux Admin">Admin Linux</p>
+                        <p class="skill-tag" data-fr="Développement Logiciel" data-en="Software Development">Développement Logiciel</p>
+                        <p class="skill-tag" data-fr="Conception Électronique" data-en="Electronic Design">Conception Électronique</p>
+                        <p class="skill-tag" data-fr="Admin Linux" data-en="Linux Admin">Admin Linux</p>
                     </div>
                     <div>
-                        <p class="skill-item" data-fr="Développement Agile" data-en="Agile Development">Développement Agile</p>
-                        <p class="skill-item" data-fr="Travail d'équipe" data-en="Teamwork">Travail d'équipe</p>
-                        <p class="skill-item" data-fr="Développement Fullstack" data-en="Fullstack Development">Développement Fullstack</p>
+                        <p class="skill-tag" data-fr="Développement Agile" data-en="Agile Development">Développement Agile</p>
+                        <p class="skill-tag" data-fr="Travail d'équipe" data-en="Teamwork">Travail d'équipe</p>
+                        <p class="skill-tag" data-fr="Développement Fullstack" data-en="Fullstack Development">Développement Fullstack</p>
                     </div>
                 </div>
             </div>
 
             <!-- Work Experience Section -->
-           
-<div class="work-experience section-card">
-    <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Expériences Professionnelles" data-en="Professional Experiences">Expériences Professionnelles</h2>
+            <div class="work-experience section-card">
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Expériences Professionnelles" data-en="Professional Experience">Expériences Professionnelles</h2>
 
-    <!-- BBI - INTRAKAT -->
-    <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-        <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-            <div class="md:w-3/4">
-                <h3 class="text-2xl font-semibold h3-style" data-fr="Ingénieur Électricien de Chantier" data-en="Electrical Site Engineer">Ingénieur Électricien de Chantier</h3>
-                <p class="font-medium text-lg text-blue-600"
-                   data-fr="BBI - INTRAKAT, Projet Riviera Tower, Elliniko, Athènes, GRÈCE"
-                   data-en="BBI - INTRAKAT, Riviera Tower Project, Elliniko, Athens, GREECE">
-                   BBI - INTRAKAT, Projet Riviera Tower, Elliniko, Athènes, GRÈCE
-                </p>
-            </div>
-            <div class="md:w-1/4 text-left md:text-right">
-                <h3 class="text-lg font-medium h3-style"
-                    data-fr="Octobre 2025 - Présent"
-                    data-en="October 2025 - Present">
-                    Octobre 2025 - Présent
-                </h3>
-            </div>
-        </div>
-        <ul class="list-disc pl-5 space-y-1">
-            <li><span class="skill-item"
-                data-fr="Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko."
-                data-en="Electrical site engineer on the Riviera Tower project in Elliniko.">
-                Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko.
-            </span></li>
-            <li><span class="skill-item"
-                data-fr="Suivi et coordination des travaux électriques sur chantier."
-                data-en="Monitoring and coordination of electrical works on site.">
-                Suivi et coordination des travaux électriques sur chantier.
-            </span></li>
-            <li><span class="skill-item"
-                data-fr="Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes."
-                data-en="Collaboration with construction teams to ensure compliance with plans and standards.">
-                Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes.
-            </span></li>
-        </ul>
-    </div>
+                <!-- BBI - INTRAKAT -->
+                <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
+                        <div class="md:w-3/4">
+                            <h3 class="text-2xl font-semibold h3-style"
+                                data-fr="Ingénieur Électricien de Chantier"
+                                data-en="Electrical Site Engineer">Ingénieur Électricien de Chantier</h3>
+                            <p class="font-medium text-lg text-blue-600"
+                               data-fr="BBI - INTRAKAT, Projet Riviera Tower, Elliniko, Athènes, GRÈCE"
+                               data-en="BBI - INTRAKAT, Riviera Tower Project, Elliniko, Athens, GREECE">
+                               BBI - INTRAKAT, Projet Riviera Tower, Elliniko, Athènes, GRÈCE
+                            </p>
+                        </div>
+                        <div class="md:w-1/4 text-left md:text-right">
+                            <h3 class="text-lg font-medium h3-style"
+                                data-fr="Octobre 2025 - Présent"
+                                data-en="October 2025 - Present">
+                                Octobre 2025 - Présent
+                            </h3>
+                        </div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li data-fr="Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko."
+                            data-en="Electrical site engineer on the Riviera Tower project in Elliniko.">
+                            Ingénieur électricien de chantier sur le projet Riviera Tower à Elliniko.
+                        </li>
+                        <li data-fr="Suivi et coordination des travaux électriques sur chantier."
+                            data-en="Monitoring and coordination of electrical works on site.">
+                            Suivi et coordination des travaux électriques sur chantier.
+                        </li>
+                        <li data-fr="Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes."
+                            data-en="Collaboration with construction teams to ensure compliance with plans and standards.">
+                            Collaboration avec les équipes de construction pour assurer la conformité aux plans et normes.
+                        </li>
+                    </ul>
+                </div>
 
-    <!-- BASIS finance group -->
-    <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-        <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-            <div class="md:w-3/4">
-                <h3 class="text-2xl font-semibold h3-style" data-fr="Data Entry" data-en="Data Entry">Data Entry</h3>
-                <p class="font-medium text-lg text-blue-600"
-                   data-fr="BASIS finance group, Kos, GRÈCE"
-                   data-en="BASIS finance group, Kos, GREECE">
-                   BASIS finance group, Kos, GRÈCE
-                </p>
-            </div>
-            <div class="md:w-1/4 text-left md:text-right">
-                <h3 class="text-lg font-medium h3-style"
-                    data-fr="Juillet 2025 - Octobre 2025"
-                    data-en="July 2025 - October 2025">
-                    Juillet 2025 - Octobre 2025
-                </h3>
-            </div>
-        </div>
-        <ul class="list-disc pl-5 space-y-1">
-            <li><span class="skill-item"
-                data-fr="Intégré à l'équipe financière pour la saisie et la gestion des données."
-                data-en="Integrated into the finance team for data entry and management.">
-                Intégré à l'équipe financière pour la saisie et la gestion des données.
-            </span></li>
-            <li><span class="skill-item"
-                data-fr="Saisie de données financières."
-                data-en="Financial data entry.">
-                Saisie de données financières.
-            </span></li>
-        </ul>
-    </div>
+                <!-- BASIS finance group -->
+                <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
+                        <div class="md:w-3/4">
+                            <h3 class="text-2xl font-semibold h3-style"
+                                data-fr="Data Entry"
+                                data-en="Data Entry">Data Entry</h3>
+                            <p class="font-medium text-lg text-blue-600"
+                               data-fr="BASIS finance group, Kos, GRÈCE"
+                               data-en="BASIS finance group, Kos, GREECE">
+                               BASIS finance group, Kos, GRÈCE
+                            </p>
+                        </div>
+                        <div class="md:w-1/4 text-left md:text-right">
+                            <h3 class="text-lg font-medium h3-style"
+                                data-fr="Juillet 2025 - Octobre 2025"
+                                data-en="July 2025 - October 2025">
+                                Juillet 2025 - Octobre 2025
+                            </h3>
+                        </div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li data-fr="Intégré à l'équipe financière pour la saisie et la gestion des données."
+                            data-en="Integrated into the finance team for data entry and management.">
+                            Intégré à l'équipe financière pour la saisie et la gestion des données.
+                        </li>
+                    </ul>
+                </div>
 
-    <!-- DISCOVERY PATH -->
-    <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-        <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-            <div class="md:w-3/4">
-                <h3 class="text-2xl font-semibold h3-style" data-fr="Stage de 4 mois" data-en="4-month Internship">Stage de 4 mois</h3>
-                <p class="font-medium text-lg text-blue-600"
-                   data-fr="DISCOVERY PATH, Athènes, GRÈCE"
-                   data-en="DISCOVERY PATH, Athens, GREECE">
-                   DISCOVERY PATH, Athènes, GRÈCE
-                </p>
-            </div>
-            <div class="md:w-1/4 text-left md:text-right">
-                <h3 class="text-lg font-medium h3-style"
-                    data-fr="Mai - Septembre 2024"
-                    data-en="May - September 2024">
-                    Mai - Septembre 2024
-                </h3>
-            </div>
-        </div>
-        <ul class="list-disc pl-5 space-y-1">
-            <li><span class="skill-item"
-                data-fr="Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté."
-                data-en="Design and construction of an ESP32 mesh network for a connected school building.">
-                Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté.
-            </span></li>
-        </ul>
-    </div>
+                <!-- DISCOVERY PATH -->
+                <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
+                        <div class="md:w-3/4">
+                            <h3 class="text-2xl font-semibold h3-style"
+                                data-fr="Stage de 4 mois"
+                                data-en="4-month Internship">Stage de 4 mois</h3>
+                            <p class="font-medium text-lg text-blue-600"
+                               data-fr="DISCOVERY PATH, Athènes, GRÈCE"
+                               data-en="DISCOVERY PATH, Athens, GREECE">
+                               DISCOVERY PATH, Athènes, GRÈCE
+                            </p>
+                        </div>
+                        <div class="md:w-1/4 text-left md:text-right">
+                            <h3 class="text-lg font-medium h3-style"
+                                data-fr="Mai - Septembre 2024"
+                                data-en="May - September 2024">
+                                Mai - Septembre 2024
+                            </h3>
+                        </div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li data-fr="Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté."
+                            data-en="Design and construction of an ESP32 mesh network for a connected school building.">
+                            Conception et construction d'un réseau maillé ESP32 pour un bâtiment scolaire connecté.
+                        </li>
+                    </ul>
+                </div>
 
-    <!-- Intelsys SA -->
-    <div class="mb-6 last:mb-0">
-        <div class="flex flex-col md:flex-row justify-between items-start mb-2">
-            <div class="md:w-3/4">
-                <h3 class="text-2xl font-semibold h3-style" data-fr="Stage de 8 semaines" data-en="8-week Internship">Stage de 8 semaines</h3>
-                <p class="font-medium text-lg text-blue-600"
-                   data-fr="Intelsys SA, Athènes, GRÈCE"
-                   data-en="Intelsys SA, Athens, GREECE">
-                   Intelsys SA, Athènes, GRÈCE
-                </p>
+                <!-- Intelsys SA -->
+                <div class="mb-6 last:mb-0">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-2">
+                        <div class="md:w-3/4">
+                            <h3 class="text-2xl font-semibold h3-style"
+                                data-fr="Stage de 8 semaines"
+                                data-en="8-week Internship">Stage de 8 semaines</h3>
+                            <p class="font-medium text-lg text-blue-600"
+                               data-fr="Intelsys SA, Athènes, GRÈCE"
+                               data-en="Intelsys SA, Athens, GREECE">
+                               Intelsys SA, Athènes, GRÈCE
+                            </p>
+                        </div>
+                        <div class="md:w-1/4 text-left md:text-right">
+                            <h3 class="text-lg font-medium h3-style"
+                                data-fr="Juillet 2023"
+                                data-en="July 2023">
+                                Juillet 2023
+                            </h3>
+                        </div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li data-fr="Installation et mise en service de liaisons micro-ondes (Nokia, Huawei, Ericsson)."
+                            data-en="Installation and commissioning of microwave links (Nokia, Huawei, Ericsson).">
+                            Installation et mise en service de liaisons micro-ondes (Nokia, Huawei, Ericsson).
+                        </li>
+                        <li data-fr="Installation de stations de base 4G/5G."
+                            data-en="Installation of 4G/5G base stations.">
+                            Installation de stations de base 4G/5G.
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="md:w-1/4 text-left md:text-right">
-                <h3 class="text-lg font-medium h3-style"
-                    data-fr="Juillet 2023"
-                    data-en="July 2023">
-                    Juillet 2023
-                </h3>
-            </div>
-        </div>
-        <ul class="list-disc pl-5 space-y-1">
-            <li><span class="skill-item"
-                data-fr="Installation et mise en service de liaisons micro-ondes (Nokia, Huawei, Ericsson)."
-                data-en="Installation and commissioning of microwave links (Nokia, Huawei, Ericsson).">
-                Installation et mise en service de liaisons micro-ondes.
-            </span></li>
-            <li><span class="skill-item"
-                data-fr="Installation de stations de base 4G/5G."
-                data-en="Installation of 4G/5G base stations.">
-                Installation de stations de base 4G/5G.
-            </span></li>
-        </ul>
-    </div>
-</div>
 
             <!-- Education Section -->
             <div class="formation section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Formation" data-en="Education">Formation</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Formation" data-en="Education">Formation</h2>
 
                 <div class="mb-6 border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <h3 class="text-2xl font-semibold h3-style" data-fr="Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)" data-en="University Bachelor of Technology in Electrical Engineering and Industrial Computing (BUT GEII)">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industriel (BUT GEII)</h3>
-                    <p class="font-medium text-lg text-blue-600" data-fr="IUT de Velizy, UVSQ, Velizy-Villacoublay (78)" data-en="IUT of Velizy, UVSQ, Velizy-Villacoublay (78)">IUT de Velizy, UVSQ, Velizy-Villacoublay (78)</p>
-                    <p class="mb-2 text-gray-700" data-fr="Septembre 2021 - 2024 - Diplômé" data-en="September 2021 - 2024 - Graduate">Septembre 2021 - 2024 - Diplômé</p>
+                    <h3 class="text-2xl font-semibold h3-style"
+                        data-fr="Bachelor Universitaire de Technologie Génie Électrique et Informatique Industrielle (BUT GEII)"
+                        data-en="University Bachelor of Technology in Electrical Engineering and Industrial Computing (BUT GEII)">Bachelor Universitaire de Technologie Génie Électrique et Informatique Industrielle (BUT GEII)</h3>
+                    <p class="font-medium text-lg text-blue-600"
+                       data-fr="IUT de Vélizy, UVSQ, Vélizy-Villacoublay (78)"
+                       data-en="IUT of Vélizy, UVSQ, Vélizy-Villacoublay (78)">IUT de Vélizy, UVSQ, Vélizy-Villacoublay (78)</p>
+                    <p class="mb-2 text-gray-700"
+                       data-fr="Septembre 2021 - 2024 — Diplômé"
+                       data-en="September 2021 - 2024 — Graduated">Septembre 2021 - 2024 — Diplômé</p>
                 </div>
 
                 <div>
-                    <h3 class="text-2xl font-semibold h3-style" data-fr="Diplôme de fin d'études grec (Apolitirion)" data-en="Greek High School Diploma (Apolitirion)">Diplôme de fin d'études grec (Apolitirion)</h3>
-                    <p class="font-medium text-lg text-blue-600" data-fr="Équivalent du baccalauréat scientifique" data-en="Equivalent to scientific baccalaureate">Équivalent du baccalauréat scientifique</p>
-                    <p class="font-medium text-lg text-blue-600" data-fr="LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)" data-en="LFHED - Franco-Hellenic Eugene Delacroix High School (LFhED)">LFHED - Lycée Franco-Hellenic Eugene Delacroix (LFhED)</p>
-                    <p class="mb-2 text-gray-700" data-fr="Septembre 2021" data-en="September 2021">Septembre 2021</p>
+                    <h3 class="text-2xl font-semibold h3-style"
+                        data-fr="Diplôme de fin d'études grec (Apolytirion)"
+                        data-en="Greek High School Diploma (Apolytirion)">Diplôme de fin d'études grec (Apolytirion)</h3>
+                    <p class="font-medium text-lg text-blue-600"
+                       data-fr="Équivalent du baccalauréat scientifique"
+                       data-en="Equivalent to scientific baccalaureate">Équivalent du baccalauréat scientifique</p>
+                    <p class="font-medium text-lg text-blue-600"
+                       data-fr="Lycée Franco-Hellénique Eugène Delacroix (LFHED)"
+                       data-en="Franco-Hellenic Eugène Delacroix High School (LFHED)">Lycée Franco-Hellénique Eugène Delacroix (LFHED)</p>
+                    <p class="mb-2 text-gray-700"
+                       data-fr="Septembre 2021"
+                       data-en="September 2021">Septembre 2021</p>
                 </div>
             </div>
 
             <!-- Technical Skills Section -->
             <div class="technical-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Compétences Techniques & Informatiques" data-en="Technical & IT Skills">Compétences Techniques & Informatiques</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Compétences Techniques & Informatiques"
+                    data-en="Technical & IT Skills">Compétences Techniques & Informatiques</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Électricité et électronique:" data-en="Electricity and electronics:">Électricité et électronique:</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style"
+                            data-fr="Électricité et électronique :"
+                            data-en="Electricity and electronics:">Électricité et électronique :</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item" data-fr="Électronique analogique et numérique" data-en="Analog and digital electronics">Électronique analogique et numérique</span></li>
-                            <li><span class="skill-item" data-fr="Conversion d'énergie" data-en="Energy conversion">Conversion d'énergie</span></li>
-                            <li><span class="skill-item" data-fr="Transformateurs" data-en="Transformers">Transformateurs</span></li>
-                            <li><span class="skill-item" data-fr="Machines à courant continu" data-en="DC machines">Machines à courant continu</span></li>
-                            <li><span class="skill-item" data-fr="Simulation sous LTspice et PSim" data-en="Simulation with LTspice and PSim">Simulation sous LTspice et PSim</span></li>
-                            <li><span class="skill-item" data-fr="Réalisation de cartes sous Kicad (CAO)" data-en="PCB design with Kicad (CAD)">Réalisation de cartes sous Kicad (CAO)</span></li>
+                            <li><span class="skill-tag" data-fr="Électronique analogique et numérique" data-en="Analog and digital electronics">Électronique analogique et numérique</span></li>
+                            <li><span class="skill-tag" data-fr="Conversion d'énergie" data-en="Energy conversion">Conversion d'énergie</span></li>
+                            <li><span class="skill-tag" data-fr="Transformateurs" data-en="Transformers">Transformateurs</span></li>
+                            <li><span class="skill-tag" data-fr="Machines à courant continu" data-en="DC machines">Machines à courant continu</span></li>
+                            <li><span class="skill-tag" data-fr="Simulation sous LTspice et PSim" data-en="Simulation with LTspice and PSim">Simulation sous LTspice et PSim</span></li>
+                            <li><span class="skill-tag" data-fr="Conception de cartes sous KiCad (CAO)" data-en="PCB design with KiCad (CAD)">Conception de cartes sous KiCad (CAO)</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Automatisme:" data-en="Automation:">Automatisme:</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style"
+                            data-fr="Automatisme :"
+                            data-en="Automation:">Automatisme :</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item" data-fr="Automates programmables Schneider Grafcet" data-en="Schneider Grafcet PLCs">Automates programmables Schneider Grafcet</span></li>
-                            <li><span class="skill-item" data-fr="Ladder" data-en="Ladder">Ladder</span></li>
+                            <li><span class="skill-tag" data-fr="Automates programmables Schneider" data-en="Schneider PLCs">Automates programmables Schneider</span></li>
+                            <li><span class="skill-tag" data-fr="Grafcet" data-en="Grafcet">Grafcet</span></li>
+                            <li><span class="skill-tag" data-fr="Ladder" data-en="Ladder">Ladder</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Informatique Industrielle:" data-en="Industrial IT:">Informatique Industrielle:</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style"
+                            data-fr="Informatique Industrielle :"
+                            data-en="Industrial IT:">Informatique Industrielle :</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item" data-fr="Microcontrôleurs C FPGA (logiciel Xilinx) VHDL" data-en="Microcontrollers C FPGA (Xilinx software) VHDL">Microcontrôleurs C FPGA (logiciel Xilinx) VHDL</span></li>
-                            <li><span class="skill-item" data-fr="BUS CAN" data-en="CAN BUS">BUS CAN</span></li>
-                            <li><span class="skill-item" data-fr="IoT microcontroler" data-en="IoT microcontroller">IoT microcontroler</span></li>
-                            <li><span class="skill-item" data-fr="FREERTOS" data-en="FREERTOS">FREERTOS</span></li>
-                            <li><span class="skill-item" data-fr="SQL" data-en="SQL">SQL</span></li>
+                            <li><span class="skill-tag" data-fr="Microcontrôleurs (C)" data-en="Microcontrollers (C)">Microcontrôleurs (C)</span></li>
+                            <li><span class="skill-tag" data-fr="FPGA (Xilinx) — VHDL" data-en="FPGA (Xilinx) — VHDL">FPGA (Xilinx) — VHDL</span></li>
+                            <li><span class="skill-tag" data-fr="BUS CAN" data-en="CAN BUS">BUS CAN</span></li>
+                            <li><span class="skill-tag" data-fr="Microcontrôleurs IoT (ESP32)" data-en="IoT microcontrollers (ESP32)">Microcontrôleurs IoT (ESP32)</span></li>
+                            <li><span class="skill-tag" data-fr="FreeRTOS" data-en="FreeRTOS">FreeRTOS</span></li>
+                            <li><span class="skill-tag" data-fr="SQL" data-en="SQL">SQL</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xl font-semibold mb-2 h4-style" data-fr="Informatique:" data-en="IT:">Informatique:</h4>
+                        <h4 class="text-xl font-semibold mb-2 h4-style"
+                            data-fr="Informatique :"
+                            data-en="IT:">Informatique :</h4>
                         <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="skill-item" data-fr="Langage C et C++" data-en="C and C++ language">Langage C et C++</span></li>
-                            <li><span class="skill-item" data-fr="Scilab" data-en="Scilab">Scilab</span></li>
-                            <li><span class="skill-item" data-fr="LabView" data-en="LabView">LabView</span></li>
-                            <li><span class="skill-item" data-fr="Microsoft Office" data-en="Microsoft Office">Microsoft Office</span></li>
-                            <li><span class="skill-item" data-fr="Python" data-en="Python">Python</span></li>
+                            <li><span class="skill-tag" data-fr="C / C++" data-en="C / C++">C / C++</span></li>
+                            <li><span class="skill-tag" data-fr="Python" data-en="Python">Python</span></li>
+                            <li><span class="skill-tag" data-fr="Scilab" data-en="Scilab">Scilab</span></li>
+                            <li><span class="skill-tag" data-fr="LabVIEW" data-en="LabVIEW">LabVIEW</span></li>
+                            <li><span class="skill-tag" data-fr="Microsoft Office" data-en="Microsoft Office">Microsoft Office</span></li>
                         </ul>
                     </div>
                 </div>
@@ -466,87 +540,116 @@
 
             <!-- Projects Section -->
             <div class="projects section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Projets" data-en="Projects">Projets</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Projets" data-en="Projects">Projets</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item" data-fr="Étude et réalisation d'un thermomètre numérique en technologie traversante." data-en="Study and realization of a digital thermometer using through-hole technology.">Étude et réalisation d'un thermomètre numérique en technologie traversante.</span></li>
-                    <li><span class="skill-item" data-fr="Commande par un FPGA de la vitesse de rotation d'un moteur à partir d'une télécommande infrarouge." data-en="FPGA control of motor rotation speed from an infrared remote control.">Commande par un FPGA de la vitesse de rotation d'un moteur à partir d'une télécommande infrarouge.</span></li>
-                    <li><span class="skill-item" data-fr="Banc de test contrôlé par une carte numérique (décodage trame, FPGA...)." data-en="Test bench controlled by a digital board (frame decoding, FPGA...).">Banc de test contrôlé par une carte numérique (décodage trame, FPGA...).</span></li>
-                    <li><span class="skill-item" data-fr="Mesure de distance (capteur à ultrason)." data-en="Distance measurement (ultrasonic sensor).">Mesure de distance (capteur à ultrason).</span></li>
-                    <li><span class="skill-item" data-fr="Affichage de mesures avec une carte Raspberry Pi." data-en="Display measurements with a Raspberry Pi board.">Affichage de mesures avec une carte Raspberry Pi.</span></li>
-                    <li><span class="skill-item" data-fr="Acquisition de mesures avec une carte Sleepy Bee." data-en="Measurement acquisition with a Sleepy Bee board.">Acquisition de mesures avec une carte Sleepy Bee.</span></li>
-                    <li><span class="skill-item" data-fr="Voiture autonome avec lidar." data-en="Autonomous car with lidar.">Voiture autonome avec lidar.</span></li>
-                    <li><span class="skill-item" data-fr="Réalisation d'un bras robot automatique." data-en="Realization of an automatic robotic arm.">Réalisation d'un bras robot automatique.</span></li>
-                    <li><span class="skill-item" data-fr="Réalisation d'un système décentralisé de capteurs en utilisant ESP32 et Raspberry Pi." data-en="Realization of a decentralized sensor system using ESP32 and Raspberry Pi.">Réalisation d'un système décentralisé de capteurs en utilisant ESP32 and Raspberry Pi.</span></li>
+                    <li data-fr="Étude et réalisation d'un thermomètre numérique en technologie traversante."
+                        data-en="Study and realisation of a digital thermometer using through-hole technology.">Étude et réalisation d'un thermomètre numérique en technologie traversante.</li>
+                    <li data-fr="Commande par FPGA de la vitesse de rotation d'un moteur via une télécommande infrarouge."
+                        data-en="FPGA control of motor rotation speed from an infrared remote control.">Commande par FPGA de la vitesse de rotation d'un moteur via une télécommande infrarouge.</li>
+                    <li data-fr="Banc de test contrôlé par une carte numérique (décodage de trame, FPGA…)."
+                        data-en="Test bench controlled by a digital board (frame decoding, FPGA…).">Banc de test contrôlé par une carte numérique (décodage de trame, FPGA…).</li>
+                    <li data-fr="Mesure de distance par capteur à ultrasons."
+                        data-en="Distance measurement using an ultrasonic sensor.">Mesure de distance par capteur à ultrasons.</li>
+                    <li data-fr="Affichage de mesures avec une carte Raspberry Pi."
+                        data-en="Display of measurements with a Raspberry Pi board.">Affichage de mesures avec une carte Raspberry Pi.</li>
+                    <li data-fr="Acquisition de mesures avec une carte Sleepy Bee."
+                        data-en="Measurement acquisition with a Sleepy Bee board.">Acquisition de mesures avec une carte Sleepy Bee.</li>
+                    <li data-fr="Voiture autonome équipée d'un lidar."
+                        data-en="Autonomous car equipped with a lidar.">Voiture autonome équipée d'un lidar.</li>
+                    <li data-fr="Réalisation d'un bras robotique automatique."
+                        data-en="Realisation of an automatic robotic arm.">Réalisation d'un bras robotique automatique.</li>
+                    <li data-fr="Système décentralisé de capteurs basé sur ESP32 et Raspberry Pi."
+                        data-en="Decentralised sensor system based on ESP32 and Raspberry Pi.">Système décentralisé de capteurs basé sur ESP32 et Raspberry Pi.</li>
                 </ul>
             </div>
 
             <!-- Languages Section -->
             <div class="languages section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Langues" data-en="Languages">Langues</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Langues" data-en="Languages">Langues</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item" data-fr="ANGLAIS - niveau C1 (TOEIC) 🇬🇧" data-en="ENGLISH - C1 level (TOEIC) 🇬🇧">ANGLAIS - niveau C1 (TOEIC) 🇬🇧</span></li>
-                    <li><span class="skill-item" data-fr="FRANCAIS 🇫🇷" data-en="FRENCH 🇫🇷">FRANCAIS 🇫🇷</span></li>
-                    <li><span class="skill-item" data-fr="GREC - Langue maternelle 🇬🇷" data-en="GREEK - Native language 🇬🇷">GREC - Langue maternelle 🇬🇷</span></li>
+                    <li><span class="skill-tag" data-fr="Anglais — niveau C1 (TOEIC) 🇬🇧" data-en="English — C1 level (TOEIC) 🇬🇧">Anglais — niveau C1 (TOEIC) 🇬🇧</span></li>
+                    <li><span class="skill-tag" data-fr="Français — courant 🇫🇷" data-en="French — fluent 🇫🇷">Français — courant 🇫🇷</span></li>
+                    <li><span class="skill-tag" data-fr="Grec — langue maternelle 🇬🇷" data-en="Greek — native 🇬🇷">Grec — langue maternelle 🇬🇷</span></li>
                 </ul>
             </div>
 
             <!-- Interests Section -->
             <div class="interests section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Centres d'intérêt & Hobbies" data-en="Interests & Hobbies">Centres d'intérêt & Hobbies</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Centres d'intérêt & Hobbies"
+                    data-en="Interests & Hobbies">Centres d'intérêt & Hobbies</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item" data-fr="Scout marin (11 années)" data-en="Sea scout (11 years)">Scout marin (11 années)</span></li>
-                    <li><span class="skill-item" data-fr="Water polo (6 années)" data-en="Water polo (6 years)">Water polo (6 années)</span></li>
-                    <li><span class="skill-item" data-fr="Kick boxing (3 années)" data-en="Kick boxing (3 years)">Kick boxing (3 années)</span></li>
-                    <li><span class="skill-item" data-fr="Sailing (navigation à voile)" data-en="Sailing">Sailing (navigation à voile)</span></li>
-                    <li><span class="skill-item" data-fr="Responsable technique son et lumière dans des spectacles scolaires au Lycée Franco-Hellénique d'Athènes" data-en="Sound and lighting technical manager for school performances at the Franco-Hellenic School of Athens">Responsable technique son et lumière dans des spectacles scolaires au Lycée Franco-Hellénique d'Athènes</span></li>
+                    <li data-fr="Scout marin (11 années)"
+                        data-en="Sea scout (11 years)">Scout marin (11 années)</li>
+                    <li data-fr="Water-polo (6 années)"
+                        data-en="Water polo (6 years)">Water-polo (6 années)</li>
+                    <li data-fr="Kick-boxing (3 années)"
+                        data-en="Kickboxing (3 years)">Kick-boxing (3 années)</li>
+                    <li data-fr="Voile (sailing)"
+                        data-en="Sailing">Voile (sailing)</li>
+                    <li data-fr="Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes."
+                        data-en="Sound and lighting technical manager for school performances at the Franco-Hellenic School of Athens.">Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes.</li>
                 </ul>
             </div>
 
             <!-- Soft Skills Section -->
             <div class="soft-skills section-card">
-                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2" data-fr="Soft Skills" data-en="Soft Skills">Soft Skills</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-blue-500 pb-2"
+                    data-fr="Soft Skills" data-en="Soft Skills">Soft Skills</h2>
                 <ul class="list-disc pl-5 space-y-1">
-                    <li><span class="skill-item" data-fr="TRAVAIL EN ÉQUIPE" data-en="TEAMWORK">TRAVAIL EN ÉQUIPE</span></li>
-                    <li><span class="skill-item" data-fr="ADAPTATION" data-en="ADAPTATION">ADAPTATION</span></li>
-                    <li><span class="skill-item" data-fr="VISUALISATION" data-en="VISUALIZATION">VISUALISATION</span></li>
-                    <li><span class="skill-item" data-fr="CURIOSITÉ" data-en="CURIOSITY">CURIOSITÉ</span></li>
+                    <li><span class="skill-tag" data-fr="Travail en équipe" data-en="Teamwork">Travail en équipe</span></li>
+                    <li><span class="skill-tag" data-fr="Adaptation" data-en="Adaptability">Adaptation</span></li>
+                    <li><span class="skill-tag" data-fr="Visualisation" data-en="Visualisation">Visualisation</span></li>
+                    <li><span class="skill-tag" data-fr="Curiosité" data-en="Curiosity">Curiosité</span></li>
                 </ul>
             </div>
 
             <!-- Footer Section -->
             <footer class="mt-8 bg-gray-800 text-white p-6 sm:p-8 rounded-xl shadow-lg text-center">
-                <p class="text-sm" id="footerRights" data-fr="&copy; 2025 Michail Tsimpidaros. Tous droits réservés." data-en="&copy; 2025 Michail Tsimpidaros. All rights reserved.">&copy; 2025 Michail Tsimpidaros. Tous droits réservés.</p>
-                <p class="text-sm mt-2" data-fr="Réalisé avec passion et code." data-en="Made with passion and code.">Réalisé avec passion et code.</p>
+                <p class="text-sm" id="footerRights"
+                   data-fr="© 2025 Michail Tsimpidaros. Tous droits réservés."
+                   data-en="© 2025 Michail Tsimpidaros. All rights reserved.">© 2025 Michail Tsimpidaros. Tous droits réservés.</p>
+                <p class="text-sm mt-2"
+                   data-fr="Réalisé avec passion et code."
+                   data-en="Made with passion and code.">Réalisé avec passion et code.</p>
             </footer>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = document.getElementById('themeIcon');
             const languageToggle = document.getElementById('languageToggle');
             const languageText = document.getElementById('languageText');
             const htmlElement = document.documentElement;
             const cvTitleElement = document.getElementById('cvTitle');
-            const downloadButton = document.querySelector('.download-button');
-            const downloadButtonText = downloadButton.querySelector('span');
 
-            // --- Theme Toggle Logic ---
+            // --- Theme Toggle ---
             function setTheme(theme) {
                 if (theme === 'dark') {
                     htmlElement.classList.add('dark-mode');
                     themeIcon.textContent = '🌙';
-                    localStorage.setItem('theme', 'dark');
+                    themeToggle.setAttribute('aria-label', 'Switch to light mode');
                 } else {
                     htmlElement.classList.remove('dark-mode');
                     themeIcon.textContent = '☀️';
-                    localStorage.setItem('theme', 'light');
+                    themeToggle.setAttribute('aria-label', 'Switch to dark mode');
                 }
+                try { localStorage.setItem('theme', theme); } catch (e) { /* private mode */ }
             }
 
-            // Check for saved theme preference
-            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            let savedTheme;
+            try {
+                savedTheme = localStorage.getItem('theme');
+            } catch (e) {
+                savedTheme = null;
+            }
+            if (!savedTheme) {
+                savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
             setTheme(savedTheme);
 
             themeToggle.addEventListener('click', () => {
@@ -554,38 +657,37 @@
                 setTheme(newTheme);
             });
 
-            // --- Language Toggle Logic ---
+            // --- Language Toggle ---
             let isFrench = true;
+            try {
+                const savedLanguage = localStorage.getItem('language');
+                if (savedLanguage === 'en') isFrench = false;
+            } catch (e) { /* private mode */ }
 
             function updateText() {
                 const lang = isFrench ? 'fr' : 'en';
-                languageText.textContent = isFrench ? 'FR' : 'EN';
-                cvTitleElement.textContent = `Michail Tsimpidaros - CV (${lang.toUpperCase()})`;
+                // Update the html lang attribute for accessibility & SEO
+                htmlElement.setAttribute('lang', lang);
+                languageText.textContent = isFrench ? 'EN' : 'FR'; // Button shows the language you'd switch TO
+                cvTitleElement.textContent = isFrench
+                    ? 'Michail Tsimpidaros - Ingénieur Électrique & Systèmes Embarqués - CV'
+                    : 'Michail Tsimpidaros - Electrical & Embedded Systems Engineer - CV';
+                languageToggle.setAttribute('aria-label', isFrench ? 'Switch to English' : 'Passer en français');
 
                 document.querySelectorAll('[data-fr], [data-en]').forEach(el => {
                     const text = el.getAttribute(`data-${lang}`);
-                    if (text) {
-                        el.textContent = text;
-                    }
+                    if (text) el.textContent = text;
                 });
             }
 
+            // Single, merged listener — toggles state, updates text, AND saves preference
             languageToggle.addEventListener('click', () => {
                 isFrench = !isFrench;
                 updateText();
+                try { localStorage.setItem('language', isFrench ? 'fr' : 'en'); } catch (e) { /* private mode */ }
             });
 
-            // Initial text update based on default language (French)
-            const savedLanguage = localStorage.getItem('language');
-            if (savedLanguage === 'en') {
-                isFrench = false;
-            }
             updateText();
-
-            // Save language preference on toggle
-            languageToggle.addEventListener('click', () => {
-                localStorage.setItem('language', isFrench ? 'fr' : 'en');
-            });
         });
     </script>
 </body>

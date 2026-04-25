@@ -455,6 +455,146 @@
         }
         footer p { margin: 0.2rem 0; }
 
+        /* ─────────────────────────────────────────────
+           ANIMATIONS — subtle, respect reduced-motion
+        ───────────────────────────────────────────── */
+
+        /* Page-load: sections fade up in sequence */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes popIn {
+            0%   { opacity: 0; transform: scale(0.85); }
+            70%  { transform: scale(1.04); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes pulseDot {
+            0%, 100% { box-shadow: 0 0 0 0 var(--accent-ring); }
+            50%      { box-shadow: 0 0 0 6px transparent; }
+        }
+        @keyframes underlineGrow {
+            from { transform: scaleX(0); }
+            to   { transform: scaleX(1); }
+        }
+
+        /* Stagger the hero on load */
+        .hero > div > * {
+            opacity: 0;
+            animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .hero .eyebrow      { animation-delay: 0.05s; }
+        .hero h1            { animation-delay: 0.12s; }
+        .hero .role         { animation-delay: 0.20s; }
+        .hero .pitch        { animation-delay: 0.28s; }
+        .hero .contact-strip{ animation-delay: 0.36s; }
+        .hero .tech-tags    { animation-delay: 0.44s; }
+
+        /* Tech tags pop in individually after the strip arrives */
+        .tech-tag {
+            opacity: 0;
+            animation: popIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .tech-tag:nth-child(1) { animation-delay: 0.50s; }
+        .tech-tag:nth-child(2) { animation-delay: 0.56s; }
+        .tech-tag:nth-child(3) { animation-delay: 0.62s; }
+        .tech-tag:nth-child(4) { animation-delay: 0.68s; }
+        .tech-tag:nth-child(5) { animation-delay: 0.74s; }
+
+        /* Sections fade up when revealed (via IntersectionObserver class .reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section title trailing line: draw in when revealed */
+        .section-title::after {
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition-delay: 0.15s;
+        }
+        .reveal.is-visible .section-title::after,
+        section.is-visible .section-title::after {
+            transform: scaleX(1);
+        }
+
+        /* Timeline dots: small bloom on reveal */
+        .timeline-item::before {
+            transform: scale(0.6);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        opacity 0.5s ease;
+        }
+        .reveal.is-visible .timeline-item::before,
+        section.is-visible .timeline-item::before {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Eyebrow gets a subtle live dot */
+        .eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 0.55rem;
+            vertical-align: middle;
+            animation: pulseDot 2.4s ease-in-out infinite;
+        }
+
+        /* Download button: a touch more responsive on hover */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                transparent 30%,
+                rgba(255,255,255,0.18) 50%,
+                transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        .btn-primary:hover::after {
+            transform: translateX(100%);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.25);
+        }
+
+        /* Smooth scroll on anchor jumps */
+        html { scroll-behavior: smooth; }
+
+        /* Chips: tiny lift on hover (already had bg change) */
+        .chip { transform: translateY(0); }
+        .chip:hover { transform: translateY(-1px); }
+
+        /* Project items: gentle lift on hover */
+        .project-item {
+            transition: transform 0.2s ease, border-left-width 0.2s ease;
+        }
+        .project-item:hover {
+            transform: translateX(2px);
+            border-left-width: 4px;
+        }
+
         @media print {
             body { background: white; color: black; font-size: 10pt; }
             .topbar { display: none; }
@@ -470,8 +610,14 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
+            .hero > div > *, .tech-tag { opacity: 1; }
+            .reveal { opacity: 1; transform: none; }
+            .timeline-item::before { transform: scale(1); opacity: 1; }
+            .section-title::after { transform: scaleX(1); }
         }
     </style>
 </head>
@@ -479,9 +625,10 @@
     <div class="page">
 
         <div class="topbar">
-            <a href="https://www.canva.com/design/DAE0frvMnzw/O18WpLDmr097sUzPzlflHg/view?utm_content=DAE0frvMnzw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc809747e16"
+            <a href="https://drive.google.com/file/d/1JfKEgywSl9u-HBm5DB6AVcVD-D6uyVEP/view?usp=sharing"
                class="btn btn-primary"
-               download
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Download CV as PDF">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
@@ -858,6 +1005,25 @@
             });
 
             updateText();
+
+            // ── Reveal-on-scroll for sections ──
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const sections = document.querySelectorAll('main section, aside section');
+
+            if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+                sections.forEach(s => s.classList.add('is-visible'));
+            } else {
+                sections.forEach(s => s.classList.add('reveal'));
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                sections.forEach(s => observer.observe(s));
+            }
         });
     </script>
 </body>

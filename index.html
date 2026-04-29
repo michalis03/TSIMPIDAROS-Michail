@@ -141,12 +141,37 @@
         .controls { display: flex; gap: 0.5rem; }
 
         .hero {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
             padding: 2rem 0 2.5rem;
             border-bottom: 1px solid var(--border);
             margin-bottom: 2.5rem;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .hero-text { flex: 1; min-width: 0; }
+        .hero-avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, #f97316 100%);
+            color: white;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            letter-spacing: -0.02em;
+            box-shadow: 0 4px 24px var(--accent-ring);
+            margin-top: 0.25rem;
+            animation: popIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
+        }
+        @media (max-width: 480px) {
+            .hero-avatar { width: 60px; height: 60px; font-size: 1.25rem; }
         }
 
         .eyebrow {
@@ -164,6 +189,17 @@
             line-height: 1;
             letter-spacing: -0.03em;
             margin: 0.25rem 0 0.75rem;
+        }
+        @supports (-webkit-background-clip: text) or (background-clip: text) {
+            .hero h1 {
+                background: linear-gradient(135deg, var(--text) 35%, var(--accent));
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+        @media print {
+            .hero h1 { background: none; -webkit-text-fill-color: black; color: black; }
         }
 
         .hero .role {
@@ -200,6 +236,10 @@
             color: var(--accent);
             flex-shrink: 0;
         }
+        .contact-phones { flex-wrap: wrap; }
+        .contact-phones a { display: inline; }
+        .contact-sep { opacity: 0.4; font-family: var(--font-mono); }
+        .ci > span { display: inline; }
 
         .tech-tags {
             display: flex;
@@ -257,28 +297,26 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: var(--border);
+            background: linear-gradient(to right, var(--accent), transparent);
+            border-radius: 1px;
         }
         .sidebar .section-title { font-size: 0.7rem; }
 
         .timeline-item {
-            position: relative;
-            padding-left: 1.5rem;
-            padding-bottom: 1.75rem;
-            border-left: 1px solid var(--border);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+            margin-bottom: 0.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .timeline-item:last-child { padding-bottom: 0; }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -5px;
-            top: 0.4rem;
-            width: 9px;
-            height: 9px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px var(--bg);
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item:hover {
+            transform: translateX(3px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
         }
+        .timeline-item::before { display: none; }
 
         .item-date {
             font-family: var(--font-mono);
@@ -348,6 +386,24 @@
             color: var(--accent);
             border-color: var(--accent-ring);
         }
+        .skill-group-label::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-right: 0.45rem;
+            vertical-align: middle;
+            background: var(--text-subtle);
+        }
+        .skill-group--elec .skill-group-label::before { background: #3b82f6; }
+        .skill-group--auto .skill-group-label::before { background: #10b981; }
+        .skill-group--industrial .skill-group-label::before { background: #8b5cf6; }
+        .skill-group--code .skill-group-label::before { background: #f59e0b; }
+        .skill-group--elec .chip:hover { background: rgba(59,130,246,0.1); color: #3b82f6; border-color: rgba(59,130,246,0.25); }
+        .skill-group--auto .chip:hover { background: rgba(16,185,129,0.1); color: #10b981; border-color: rgba(16,185,129,0.25); }
+        .skill-group--industrial .chip:hover { background: rgba(139,92,246,0.1); color: #8b5cf6; border-color: rgba(139,92,246,0.25); }
+        .skill-group--code .chip:hover { background: rgba(245,158,11,0.1); color: #f59e0b; border-color: rgba(245,158,11,0.25); }
 
         .project-list {
             display: grid;
@@ -358,13 +414,24 @@
             .project-list { grid-template-columns: 1fr 1fr; }
         }
         .project-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
             font-size: 0.9rem;
             color: var(--text-muted);
-            padding: 0.6rem 0.75rem;
+            padding: 0.65rem 0.75rem;
             border-radius: var(--radius-sm);
             background: var(--surface-2);
             border-left: 2px solid var(--accent);
             line-height: 1.45;
+        }
+        .project-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .edu-item {
@@ -406,9 +473,7 @@
             grid-template-columns: 1fr;
             gap: 0.5rem;
         }
-        @media (min-width: 600px) {
-            .lang-list { grid-template-columns: repeat(3, 1fr); }
-        }
+        .sidebar .lang-list { grid-template-columns: 1fr; }
         .lang-item {
             display: flex;
             justify-content: space-between;
@@ -421,23 +486,6 @@
         }
         .lang-name { font-weight: 500; color: var(--text); }
         .lang-level { font-size: 0.78rem; color: var(--text-subtle); font-family: var(--font-mono); }
-
-        .simple-list {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-        .simple-list li {
-            position: relative;
-            padding-left: 1rem;
-        }
-        .simple-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-family: var(--font-mono);
-        }
 
         .softskill-chips {
             display: flex;
@@ -455,11 +503,7 @@
         }
         footer p { margin: 0.2rem 0; }
 
-        /* ─────────────────────────────────────────────
-           ANIMATIONS — subtle, respect reduced-motion
-        ───────────────────────────────────────────── */
-
-        /* Page-load: sections fade up in sequence */
+        /* ANIMATIONS */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(12px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -482,8 +526,7 @@
             to   { transform: scaleX(1); }
         }
 
-        /* Stagger the hero on load */
-        .hero > div > * {
+        .hero-text > * {
             opacity: 0;
             animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
@@ -494,7 +537,6 @@
         .hero .contact-strip{ animation-delay: 0.36s; }
         .hero .tech-tags    { animation-delay: 0.44s; }
 
-        /* Tech tags pop in individually after the strip arrives */
         .tech-tag {
             opacity: 0;
             animation: popIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -505,7 +547,6 @@
         .tech-tag:nth-child(4) { animation-delay: 0.68s; }
         .tech-tag:nth-child(5) { animation-delay: 0.74s; }
 
-        /* Sections fade up when revealed (via IntersectionObserver class .reveal) */
         .reveal {
             opacity: 0;
             transform: translateY(16px);
@@ -517,7 +558,6 @@
             transform: translateY(0);
         }
 
-        /* Section title trailing line: draw in when revealed */
         .section-title::after {
             transform-origin: left;
             transform: scaleX(0);
@@ -529,20 +569,6 @@
             transform: scaleX(1);
         }
 
-        /* Timeline dots: small bloom on reveal */
-        .timeline-item::before {
-            transform: scale(0.6);
-            opacity: 0;
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-                        opacity 0.5s ease;
-        }
-        .reveal.is-visible .timeline-item::before,
-        section.is-visible .timeline-item::before {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        /* Eyebrow gets a subtle live dot */
         .eyebrow::before {
             content: '';
             display: inline-block;
@@ -555,7 +581,6 @@
             animation: pulseDot 2.4s ease-in-out infinite;
         }
 
-        /* Download button: a touch more responsive on hover */
         .btn-primary {
             position: relative;
             overflow: hidden;
@@ -564,29 +589,21 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg,
-                transparent 30%,
-                rgba(255,255,255,0.18) 50%,
-                transparent 70%);
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
             transform: translateX(-100%);
             transition: transform 0.6s ease;
         }
-        .btn-primary:hover::after {
-            transform: translateX(100%);
-        }
+        .btn-primary:hover::after { transform: translateX(100%); }
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(234, 88, 12, 0.25);
         }
 
-        /* Smooth scroll on anchor jumps */
         html { scroll-behavior: smooth; }
 
-        /* Chips: tiny lift on hover (already had bg change) */
         .chip { transform: translateY(0); }
         .chip:hover { transform: translateY(-1px); }
 
-        /* Project items: gentle lift on hover */
         .project-item {
             transition: transform 0.2s ease, border-left-width 0.2s ease;
         }
@@ -595,15 +612,50 @@
             border-left-width: 4px;
         }
 
+        .sticky-nav {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(-80px);
+            z-index: 100;
+            display: flex;
+            gap: 0.2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.3rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .sticky-nav.is-visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .nav-pill {
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            color: var(--text-muted);
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+        .nav-pill:hover { background: var(--surface-2); color: var(--text); }
+        .nav-pill.active { background: var(--accent-soft); color: var(--accent); }
+        @media (max-width: 480px) { .sticky-nav { display: none; } }
+
         @media print {
             body { background: white; color: black; font-size: 10pt; }
             .topbar { display: none; }
+            .sticky-nav { display: none; }
             .grid { grid-template-columns: 1fr 240px !important; gap: 2rem !important; }
             .sidebar { position: static; max-height: none; overflow: visible; }
             section { page-break-inside: avoid; margin-bottom: 1.5rem; }
             .timeline-item { page-break-inside: avoid; }
             .hero { padding: 0 0 1rem; margin-bottom: 1.5rem; }
-            .hero h1 { font-size: 28pt; }
             a { color: black !important; }
         }
 
@@ -614,14 +666,20 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-            .hero > div > *, .tech-tag { opacity: 1; }
+            .hero-text > *, .tech-tag { opacity: 1; }
             .reveal { opacity: 1; transform: none; }
-            .timeline-item::before { transform: scale(1); opacity: 1; }
             .section-title::after { transform: scaleX(1); }
         }
     </style>
 </head>
 <body>
+    <nav id="stickyNav" class="sticky-nav" aria-label="Page navigation">
+        <a href="#experience" class="nav-pill" data-fr="Expérience" data-en="Experience">Expérience</a>
+        <a href="#education" class="nav-pill" data-fr="Formation" data-en="Education">Formation</a>
+        <a href="#projects" class="nav-pill" data-fr="Projets" data-en="Projects">Projets</a>
+        <a href="#interests" class="nav-pill" data-fr="Intérêts" data-en="Interests">Intérêts</a>
+    </nav>
+
     <div class="page">
 
         <div class="topbar">
@@ -647,7 +705,8 @@
         </div>
 
         <header class="hero">
-            <div>
+            <div class="hero-inner">
+            <div class="hero-text">
                 <div class="eyebrow" data-fr="Disponible · Athènes / France" data-en="Available · Athens / France">Disponible · Athènes / France</div>
                 <h1>Michail Tsimpidaros</h1>
                 <p class="role"
@@ -656,31 +715,33 @@
                    Diplômé en Génie Électrique et Informatique Industrielle (BUT GEII)
                 </p>
                 <p class="pitch"
-                   data-fr="Ouvert à tous les secteurs d'activité, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement."
-                   data-en="Open to all work sectors, with a particular interest in industry and construction, as well as large-scale projects that shape our environment.">
-                   Ouvert à tous les secteurs d'activité, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement.
+                   data-fr="Passionné par l'innovation et l'ingénierie, spécialisé en systèmes embarqués, réseaux IoT et automatisation. Ouvert à tous les secteurs, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement."
+                   data-en="Passionate about innovation and engineering, specialising in embedded systems, IoT networks, and automation. Open to all sectors, I am particularly drawn to industry and construction, and to large-scale projects that shape our environment.">
+                   Passionné par l'innovation et l'ingénierie, spécialisé en systèmes embarqués, réseaux IoT et automatisation. Ouvert à tous les secteurs, mon intérêt se porte particulièrement vers l'industrie et la construction, ainsi que les projets d'envergure qui façonnent notre environnement.
                 </p>
 
                 <div class="contact-strip">
+                    <a href="https://github.com/michalis03" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:16px;height:16px;color:var(--accent)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58 0-.28-.01-1.03-.02-2.03-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        michalis03
+                    </a>
                     <a href="mailto:michail.tsimpidaros@gmail.com">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         michail.tsimpidaros@gmail.com
                     </a>
-                    <a href="tel:+306983615071">
+                    <span class="contact-phones">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        (+30) 6983615071 <span style="opacity:.6">GR</span>
-                    </a>
-                    <a href="tel:+330695312645">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        (+33) 0695312645 <span style="opacity:.6">FR</span>
-                    </a>
-                    <span data-fr="Permis B" data-en="Driving License B">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-                        Permis B
+                        <a href="tel:+306983615071">🇬🇷 +30 698 361 5071</a>
+                        <span class="contact-sep" aria-hidden="true">·</span>
+                        <a href="tel:+330695312645">🇫🇷 +33 069 531 2645</a>
                     </span>
-                    <span data-fr="Service militaire effectué (Grèce)" data-en="Military service completed (Greece)">
+                    <span class="ci">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                        <span data-fr="Permis B" data-en="Driving License B">Permis B</span>
+                    </span>
+                    <span class="ci">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        Service militaire effectué (Grèce)
+                        <span data-fr="Service militaire effectué (Grèce)" data-en="Military service completed (Greece)">Service militaire effectué (Grèce)</span>
                     </span>
                 </div>
 
@@ -692,22 +753,15 @@
                     <span class="tech-tag">KiCad</span>
                 </div>
             </div>
+            <div class="hero-avatar" aria-hidden="true">MT</div>
+            </div>
         </header>
 
         <div class="grid">
 
             <main>
 
-                <section>
-                    <div class="section-title" data-fr="À propos" data-en="About">À propos</div>
-                    <p style="font-size: 1rem; color: var(--text-muted); max-width: 65ch;"
-                       data-fr="Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle, spécialisé en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques."
-                       data-en="Passionate about innovation and engineering, I am a young graduate in Electrical Engineering and Industrial Computing, specialising in embedded systems development, IoT networks, and automation. Curious and adaptable, I seek to apply my technical skills and creativity to take on new technological challenges.">
-                        Passionné par l'innovation et l'ingénierie, je suis un jeune diplômé en Génie Électrique et Informatique Industrielle, spécialisé en développement de systèmes embarqués, réseaux IoT et automatisation. Curieux et adaptable, je cherche à appliquer mes compétences techniques et ma créativité pour relever de nouveaux défis technologiques.
-                    </p>
-                </section>
-
-                <section>
+                <section id="experience">
                     <div class="section-title" data-fr="Expérience" data-en="Experience">Expérience</div>
 
                     <div class="timeline-item">
@@ -771,7 +825,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section id="education">
                     <div class="section-title" data-fr="Formation" data-en="Education">Formation</div>
 
                     <div class="edu-item">
@@ -812,19 +866,110 @@
                     </div>
                 </section>
 
-                <section>
+                <section id="projects">
                     <div class="section-title" data-fr="Projets sélectionnés" data-en="Selected projects">Projets sélectionnés</div>
                     <ul class="project-list">
-                        <li class="project-item" data-fr="Thermomètre numérique en technologie traversante." data-en="Digital thermometer using through-hole technology.">Thermomètre numérique en technologie traversante.</li>
-                        <li class="project-item" data-fr="Commande FPGA d'un moteur via télécommande infrarouge." data-en="FPGA control of a motor via infrared remote.">Commande FPGA d'un moteur via télécommande infrarouge.</li>
-                        <li class="project-item" data-fr="Banc de test contrôlé par carte numérique (décodage de trame, FPGA)." data-en="Test bench controlled by a digital board (frame decoding, FPGA).">Banc de test contrôlé par carte numérique (décodage de trame, FPGA).</li>
-                        <li class="project-item" data-fr="Mesure de distance par capteur à ultrasons." data-en="Distance measurement using an ultrasonic sensor.">Mesure de distance par capteur à ultrasons.</li>
-                        <li class="project-item" data-fr="Affichage de mesures sur Raspberry Pi." data-en="Measurement display on Raspberry Pi.">Affichage de mesures sur Raspberry Pi.</li>
-                        <li class="project-item" data-fr="Acquisition de mesures avec carte Sleepy Bee." data-en="Measurement acquisition with a Sleepy Bee board.">Acquisition de mesures avec carte Sleepy Bee.</li>
-                        <li class="project-item" data-fr="Voiture autonome équipée d'un lidar." data-en="Autonomous car equipped with a lidar.">Voiture autonome équipée d'un lidar.</li>
-                        <li class="project-item" data-fr="Bras robotique automatique." data-en="Automatic robotic arm.">Bras robotique automatique.</li>
-                        <li class="project-item" data-fr="Système décentralisé de capteurs (ESP32 + Raspberry Pi)." data-en="Decentralised sensor system (ESP32 + Raspberry Pi).">Système décentralisé de capteurs (ESP32 + Raspberry Pi).</li>
+                        <li class="project-item">
+                            <span class="project-tag">HW</span>
+                            <span data-fr="Thermomètre numérique en technologie traversante." data-en="Digital thermometer using through-hole technology.">Thermomètre numérique en technologie traversante.</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">FPGA</span>
+                            <span data-fr="Commande FPGA d'un moteur via télécommande infrarouge." data-en="FPGA control of a motor via infrared remote.">Commande FPGA d'un moteur via télécommande infrarouge.</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">FPGA</span>
+                            <span data-fr="Banc de test contrôlé par carte numérique (décodage de trame, FPGA)." data-en="Test bench controlled by a digital board (frame decoding, FPGA).">Banc de test contrôlé par carte numérique (décodage de trame, FPGA).</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">C</span>
+                            <span data-fr="Mesure de distance par capteur à ultrasons." data-en="Distance measurement using an ultrasonic sensor.">Mesure de distance par capteur à ultrasons.</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">Python</span>
+                            <span data-fr="Affichage de mesures sur Raspberry Pi." data-en="Measurement display on Raspberry Pi.">Affichage de mesures sur Raspberry Pi.</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">C</span>
+                            <span data-fr="Acquisition de mesures avec carte Sleepy Bee." data-en="Measurement acquisition with a Sleepy Bee board.">Acquisition de mesures avec carte Sleepy Bee.</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">Python</span>
+                            <span data-fr="Voiture autonome équipée d'un lidar." data-en="Autonomous car equipped with a lidar.">Voiture autonome équipée d'un lidar.</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">C</span>
+                            <span data-fr="Bras robotique automatique." data-en="Automatic robotic arm.">Bras robotique automatique.</span>
+                        </li>
+                        <li class="project-item">
+                            <span class="project-tag">IoT</span>
+                            <span data-fr="Système décentralisé de capteurs (ESP32 + Raspberry Pi)." data-en="Decentralised sensor system (ESP32 + Raspberry Pi).">Système décentralisé de capteurs (ESP32 + Raspberry Pi).</span>
+                        </li>
                     </ul>
+                </section>
+
+                <section id="interests">
+                    <div class="section-title" data-fr="Centres d'intérêt" data-en="Interests">Centres d'intérêt</div>
+                    <div class="softskill-chips">
+                        <span class="chip" data-fr="Scout marin · 11 ans" data-en="Sea scout · 11 yrs">Scout marin · 11 ans</span>
+                        <span class="chip" data-fr="Water-polo · 6 ans" data-en="Water polo · 6 yrs">Water-polo · 6 ans</span>
+                        <span class="chip" data-fr="Kick-boxing · 3 ans" data-en="Kickboxing · 3 yrs">Kick-boxing · 3 ans</span>
+                        <span class="chip" data-fr="Voile" data-en="Sailing">Voile</span>
+                        <span class="chip" data-fr="Son &amp; lumière — LFHED" data-en="Sound &amp; lighting — LFHED">Son &amp; lumière — LFHED</span>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+
+                <section>
+                    <div class="section-title" data-fr="Compétences techniques" data-en="Technical skills">Compétences techniques</div>
+
+                    <div class="skill-group skill-group--elec">
+                        <div class="skill-group-label" data-fr="Électricité &amp; électronique" data-en="Electricity &amp; electronics">Électricité &amp; électronique</div>
+                        <div class="skill-list">
+                            <span class="chip" data-fr="Analogique &amp; numérique" data-en="Analog &amp; digital">Analogique &amp; numérique</span>
+                            <span class="chip" data-fr="Conversion d'énergie" data-en="Energy conversion">Conversion d'énergie</span>
+                            <span class="chip" data-fr="Transformateurs" data-en="Transformers">Transformateurs</span>
+                            <span class="chip" data-fr="Machines DC" data-en="DC machines">Machines DC</span>
+                            <span class="chip">LTspice</span>
+                            <span class="chip">PSim</span>
+                            <span class="chip" data-fr="KiCad (CAO)" data-en="KiCad (CAD)">KiCad (CAO)</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group skill-group--auto">
+                        <div class="skill-group-label" data-fr="Automatisme" data-en="Automation">Automatisme</div>
+                        <div class="skill-list">
+                            <span class="chip" data-fr="Automates Schneider" data-en="Schneider PLCs">Automates Schneider</span>
+                            <span class="chip">Grafcet</span>
+                            <span class="chip">Ladder</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group skill-group--industrial">
+                        <div class="skill-group-label" data-fr="Informatique industrielle" data-en="Industrial computing">Informatique industrielle</div>
+                        <div class="skill-list">
+                            <span class="chip" data-fr="Microcontrôleurs (C)" data-en="Microcontrollers (C)">Microcontrôleurs (C)</span>
+                            <span class="chip">FPGA · VHDL</span>
+                            <span class="chip">Xilinx</span>
+                            <span class="chip">CAN BUS</span>
+                            <span class="chip">ESP32</span>
+                            <span class="chip">FreeRTOS</span>
+                            <span class="chip">SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group skill-group--code">
+                        <div class="skill-group-label" data-fr="Programmation &amp; outils" data-en="Programming &amp; tools">Programmation &amp; outils</div>
+                        <div class="skill-list">
+                            <span class="chip">C / C++</span>
+                            <span class="chip">Python</span>
+                            <span class="chip">Scilab</span>
+                            <span class="chip">LabVIEW</span>
+                            <span class="chip">MS Office</span>
+                        </div>
+                    </div>
                 </section>
 
                 <section>
@@ -841,71 +986,6 @@
                         <div class="lang-item">
                             <span class="lang-name" data-fr="Anglais 🇬🇧" data-en="English 🇬🇧">Anglais 🇬🇧</span>
                             <span class="lang-level">C1 · TOEIC</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <div class="section-title" data-fr="Centres d'intérêt" data-en="Interests">Centres d'intérêt</div>
-                    <ul class="simple-list">
-                        <li data-fr="Scout marin (11 années)" data-en="Sea scout (11 years)">Scout marin (11 années)</li>
-                        <li data-fr="Water-polo (6 années)" data-en="Water polo (6 years)">Water-polo (6 années)</li>
-                        <li data-fr="Kick-boxing (3 années)" data-en="Kickboxing (3 years)">Kick-boxing (3 années)</li>
-                        <li data-fr="Voile (sailing)" data-en="Sailing">Voile (sailing)</li>
-                        <li data-fr="Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes."
-                            data-en="Sound and lighting technical manager for school performances at the Franco-Hellenic School of Athens.">Responsable technique son et lumière pour les spectacles scolaires au Lycée Franco-Hellénique d'Athènes.</li>
-                    </ul>
-                </section>
-            </main>
-
-            <aside class="sidebar">
-
-                <section>
-                    <div class="section-title" data-fr="Compétences techniques" data-en="Technical skills">Compétences techniques</div>
-
-                    <div class="skill-group">
-                        <div class="skill-group-label" data-fr="Électricité & électronique" data-en="Electricity & electronics">Électricité & électronique</div>
-                        <div class="skill-list">
-                            <span class="chip" data-fr="Analogique & numérique" data-en="Analog & digital">Analogique & numérique</span>
-                            <span class="chip" data-fr="Conversion d'énergie" data-en="Energy conversion">Conversion d'énergie</span>
-                            <span class="chip" data-fr="Transformateurs" data-en="Transformers">Transformateurs</span>
-                            <span class="chip" data-fr="Machines DC" data-en="DC machines">Machines DC</span>
-                            <span class="chip">LTspice</span>
-                            <span class="chip">PSim</span>
-                            <span class="chip" data-fr="KiCad (CAO)" data-en="KiCad (CAD)">KiCad (CAO)</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <div class="skill-group-label" data-fr="Automatisme" data-en="Automation">Automatisme</div>
-                        <div class="skill-list">
-                            <span class="chip" data-fr="Automates Schneider" data-en="Schneider PLCs">Automates Schneider</span>
-                            <span class="chip">Grafcet</span>
-                            <span class="chip">Ladder</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <div class="skill-group-label" data-fr="Informatique industrielle" data-en="Industrial computing">Informatique industrielle</div>
-                        <div class="skill-list">
-                            <span class="chip" data-fr="Microcontrôleurs (C)" data-en="Microcontrollers (C)">Microcontrôleurs (C)</span>
-                            <span class="chip">FPGA · VHDL</span>
-                            <span class="chip">Xilinx</span>
-                            <span class="chip">CAN BUS</span>
-                            <span class="chip">ESP32</span>
-                            <span class="chip">FreeRTOS</span>
-                            <span class="chip">SQL</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <div class="skill-group-label" data-fr="Programmation & outils" data-en="Programming & tools">Programmation & outils</div>
-                        <div class="skill-list">
-                            <span class="chip">C / C++</span>
-                            <span class="chip">Python</span>
-                            <span class="chip">Scilab</span>
-                            <span class="chip">LabVIEW</span>
-                            <span class="chip">MS Office</span>
                         </div>
                     </div>
                 </section>
@@ -1006,7 +1086,7 @@
 
             updateText();
 
-            // ── Reveal-on-scroll for sections ──
+            // Reveal-on-scroll for sections
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const sections = document.querySelectorAll('main section, aside section');
 
@@ -1023,6 +1103,29 @@
                     });
                 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
                 sections.forEach(s => observer.observe(s));
+            }
+
+            // Sticky nav
+            const stickyNav = document.getElementById('stickyNav');
+            const heroEl = document.querySelector('.hero');
+            const navPills = document.querySelectorAll('.nav-pill');
+            const navTargets = ['experience','education','projects','interests']
+                .map(id => document.getElementById(id)).filter(Boolean);
+
+            if (stickyNav && heroEl && 'IntersectionObserver' in window) {
+                new IntersectionObserver(([entry]) => {
+                    stickyNav.classList.toggle('is-visible', !entry.isIntersecting);
+                }, { threshold: 0 }).observe(heroEl);
+
+                navTargets.forEach(sec => {
+                    new IntersectionObserver(([entry]) => {
+                        if (entry.isIntersecting) {
+                            navPills.forEach(p => {
+                                p.classList.toggle('active', p.getAttribute('href') === '#' + sec.id);
+                            });
+                        }
+                    }, { threshold: 0.35 }).observe(sec);
+                });
             }
         });
     </script>
